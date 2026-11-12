@@ -2,7 +2,7 @@
  * Base API client configuration with automatic backend-to-VPS fallback resilience.
  */
 
-const BACKEND_URL = (import.meta.env.VITE_BACKEND_URL || 'http://localhost:5029').replace(/\/+$/, '');
+const BACKEND_URL = (import.meta.env.VITE_BACKEND_URL || 'https://heladas-api.astrazynk.pp.ua').replace(/\/+$/, '');
 const VPS_URL = (import.meta.env.VITE_VPS_URL || 'https://heladas-api.astrazynk.pp.ua').replace(/\/+$/, '');
 
 export async function request(endpoint, options = {}) {
@@ -132,5 +132,5 @@ export async function request(endpoint, options = {}) {
     };
   }
 
-  throw new Error('No se pudo conectar ni con el backend local (http://localhost:5029) ni con el servicio VPS.');
+  throw new Error('No se pudo conectar con el backend ni con el servicio VPS.');
 }
