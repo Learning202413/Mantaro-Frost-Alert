@@ -198,23 +198,23 @@ export default function PredictionHistory() {
       )}
 
       {/* Filter and Search Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-slate-900/60 border border-slate-800 p-3.5 rounded-xl">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white border border-slate-200 p-3.5 rounded-xl shadow-xs">
         {/* Search */}
         <div className="relative flex-1 max-w-md">
-          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
             placeholder="Buscar por fecha (YYYY-MM-DD) o notas..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+            className="w-full bg-slate-50 border border-slate-300 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-600 focus:bg-white"
           />
         </div>
 
         {/* Level Filters */}
         <div className="flex items-center gap-1.5 overflow-x-auto">
-          <span className="text-xs text-slate-400 font-medium mr-1 flex items-center gap-1">
-            <Filter className="w-3.5 h-3.5 text-slate-500" /> Filtro:
+          <span className="text-xs text-slate-500 font-medium mr-1 flex items-center gap-1">
+            <Filter className="w-3.5 h-3.5 text-slate-400" /> Filtro:
           </span>
           {['ALL', 'RED', 'YELLOW', 'GREEN'].map((lvl) => {
             const labels = { ALL: 'Todos', RED: 'Rojo', YELLOW: 'Amarillo', GREEN: 'Verde' };
@@ -225,8 +225,8 @@ export default function PredictionHistory() {
                 onClick={() => setFilterLevel(lvl)}
                 className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-cyan-600 text-white shadow-sm'
-                    : 'bg-slate-800/60 text-slate-400 hover:text-white hover:bg-slate-800'
+                    ? 'bg-emerald-600 text-white shadow-xs'
+                    : 'bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200'
                 }`}
               >
                 {labels[lvl]}
@@ -238,8 +238,8 @@ export default function PredictionHistory() {
 
       {/* Table */}
       {loading ? (
-        <div className="p-12 text-center text-slate-400">
-          <RefreshCw className="w-6 h-6 animate-spin mx-auto mb-2 text-cyan-400" />
+        <div className="p-12 text-center text-slate-500">
+          <RefreshCw className="w-6 h-6 animate-spin mx-auto mb-2 text-emerald-600" />
           <p className="text-xs">Cargando registros históricos de la base de datos...</p>
         </div>
       ) : (
@@ -252,73 +252,73 @@ export default function PredictionHistory() {
 
       {/* Detail Modal / Drawer */}
       {selectedItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4 text-left">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-cyan-400" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
+          <div className="bg-white border border-slate-200 rounded-2xl max-w-lg w-full p-6 shadow-xl space-y-4 text-left">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                <Calendar className="w-4 h-4 text-emerald-600" />
                 Detalle del Registro #{selectedItem.id || selectedItem.Id}
               </h3>
               <button
                 onClick={() => setSelectedItem(null)}
-                className="text-slate-400 hover:text-white cursor-pointer"
+                className="text-slate-400 hover:text-slate-700 cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <div className="grid grid-cols-2 gap-3 text-xs">
-              <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800">
-                <span className="text-slate-500 block text-[10px] uppercase">Corte Observación</span>
-                <span className="font-semibold text-slate-200">
+              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+                <span className="text-slate-500 block text-[10px] uppercase font-semibold">Corte Observación</span>
+                <span className="font-semibold text-slate-800">
                   {selectedItem.cutoffDate || selectedItem.CutoffDate} 18:00 h
                 </span>
               </div>
-              <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800">
-                <span className="text-slate-500 block text-[10px] uppercase">Fecha Diana</span>
-                <span className="font-semibold text-slate-200">
+              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+                <span className="text-slate-500 block text-[10px] uppercase font-semibold">Fecha Diana</span>
+                <span className="font-semibold text-slate-800">
                   {selectedItem.targetDate || selectedItem.TargetDate} 06:00 h
                 </span>
               </div>
             </div>
 
             {/* Prediction Values */}
-            <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-2">
-              <div className="text-[11px] text-slate-400 uppercase font-semibold">
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center space-y-2">
+              <div className="text-[11px] text-slate-600 uppercase font-semibold">
                 Pronóstico de Temperatura Mínima
               </div>
-              <div className="text-4xl font-extrabold font-mono text-cyan-400">
+              <div className="text-4xl font-extrabold font-mono text-slate-900">
                 {(selectedItem.predictedTmin ?? selectedItem.predictedTminC ?? selectedItem.PredictedTmin ?? 0).toFixed(2)} °C
               </div>
               <div>
                 <StatusBadge level={selectedItem.alertLevel || selectedItem.AlertLevel} size="md" />
               </div>
-              <div className="pt-2 text-xs text-slate-400 flex justify-center gap-4 border-t border-slate-900">
-                <span>Base Ridge: <b>{(selectedItem.baseRidge ?? selectedItem.BaseRidge ?? 0).toFixed(2)} °C</b></span>
-                <span>Residual RF: <b>{(selectedItem.residualRf ?? selectedItem.ResidualRf ?? 0).toFixed(2)} °C</b></span>
+              <div className="pt-2 text-xs text-slate-600 flex justify-center gap-4 border-t border-slate-200">
+                <span>Base Ridge: <b className="text-slate-800">{(selectedItem.baseRidge ?? selectedItem.BaseRidge ?? 0).toFixed(2)} °C</b></span>
+                <span>Residual RF: <b className="text-emerald-700">{(selectedItem.residualRf ?? selectedItem.ResidualRf ?? 0).toFixed(2)} °C</b></span>
               </div>
             </div>
 
             {/* Meteorological Inputs */}
-            <div className="grid grid-cols-3 gap-2 text-[11px] font-mono text-slate-300">
-              <div className="p-2 rounded bg-slate-950 border border-slate-800/80">
-                <span className="text-slate-500 block text-[9px]">TT 18h</span>
-                {selectedItem.airTemp18 ?? selectedItem.AirTemp18} °C
+            <div className="grid grid-cols-3 gap-2 text-[11px] font-mono text-slate-700">
+              <div className="p-2 rounded bg-slate-50 border border-slate-200">
+                <span className="text-slate-500 block text-[9px] uppercase font-sans">TT 18h</span>
+                <span className="font-semibold text-slate-800">{selectedItem.airTemp18 ?? selectedItem.AirTemp18} °C</span>
               </div>
-              <div className="p-2 rounded bg-slate-950 border border-slate-800/80">
-                <span className="text-slate-500 block text-[9px]">HR 18h</span>
-                {selectedItem.relativeHumidity18 ?? selectedItem.RelativeHumidity18} %
+              <div className="p-2 rounded bg-slate-50 border border-slate-200">
+                <span className="text-slate-500 block text-[9px] uppercase font-sans">HR 18h</span>
+                <span className="font-semibold text-slate-800">{selectedItem.relativeHumidity18 ?? selectedItem.RelativeHumidity18} %</span>
               </div>
-              <div className="p-2 rounded bg-slate-950 border border-slate-800/80">
-                <span className="text-slate-500 block text-[9px]">Presión 18h</span>
-                {selectedItem.pressure18 ?? selectedItem.Pressure18 ?? 'N/D'} hPa
+              <div className="p-2 rounded bg-slate-50 border border-slate-200">
+                <span className="text-slate-500 block text-[9px] uppercase font-sans">Presión 18h</span>
+                <span className="font-semibold text-slate-800">{selectedItem.pressure18 ?? selectedItem.Pressure18 ?? 'N/D'} hPa</span>
               </div>
             </div>
 
             {/* Notes */}
             {selectedItem.notes && (
-              <div className="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-400">
-                <span className="font-semibold text-slate-300 block mb-1">Notas:</span>
+              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-600">
+                <span className="font-semibold text-slate-800 block mb-1">Notas:</span>
                 {selectedItem.notes}
               </div>
             )}

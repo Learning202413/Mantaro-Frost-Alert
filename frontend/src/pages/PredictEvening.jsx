@@ -314,15 +314,15 @@ export default function PredictEvening() {
       {/* =========================================================================
           EJEMPLOS Y ATAJOS DE PRUEBA RÁPIDA (1 CLIC)
          ========================================================================= */}
-      <div className="bg-gradient-to-r from-slate-900/90 via-slate-900 to-slate-950 border border-emerald-500/30 rounded-xl p-4 shadow-xl space-y-3">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-2.5">
+      <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs space-y-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-2.5">
           <div className="flex items-center gap-2">
-            <Award className="w-4 h-4 text-emerald-400" />
-            <span className="text-xs font-bold text-white uppercase tracking-wider">
+            <Award className="w-4 h-4 text-emerald-600" />
+            <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
               Ejemplos Rápidos (1 Clic)
             </span>
           </div>
-          <span className="text-[11px] text-emerald-300 font-medium">
+          <span className="text-[11px] text-emerald-700 font-semibold">
             Prueba casos reales al instante
           </span>
         </div>
@@ -336,14 +336,14 @@ export default function PredictEvening() {
               className={`p-3 text-left rounded-lg border transition-all cursor-pointer group flex flex-col justify-between ${preset.badgeClass}`}
             >
               <div className="flex items-center justify-between gap-1">
-                <span className="text-xs font-bold text-slate-100 group-hover:text-white">
+                <span className="text-xs font-bold text-slate-900">
                   {preset.shortTitle}
                 </span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded font-mono font-bold bg-slate-950/80 border border-current">
+                <span className="text-[10px] px-1.5 py-0.5 rounded font-mono font-bold bg-white/80 border border-current">
                   {preset.targetTemp}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-300 mt-1 line-clamp-2 leading-relaxed">
+              <p className="text-[11px] text-slate-600 mt-1 line-clamp-2 leading-relaxed">
                 {preset.description}
               </p>
             </button>
@@ -354,18 +354,18 @@ export default function PredictEvening() {
             type="button"
             onClick={handleSyncLiveWeather}
             disabled={syncingWeather}
-            className="p-3 text-left rounded-lg border border-teal-500/40 bg-gradient-to-r from-teal-950/60 to-emerald-950/60 hover:from-teal-900/70 hover:to-emerald-900/70 text-teal-200 transition-all cursor-pointer group flex flex-col justify-between shadow-md"
+            className="p-3 text-left rounded-lg border border-emerald-200 bg-emerald-50/70 hover:bg-emerald-100/80 text-emerald-900 transition-all cursor-pointer group flex flex-col justify-between shadow-xs"
           >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-white group-hover:text-teal-200 flex items-center gap-1.5">
-                <Radio className={`w-3.5 h-3.5 text-teal-400 ${syncingWeather ? 'animate-spin' : 'animate-pulse'}`} />
+              <span className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                <Radio className={`w-3.5 h-3.5 text-emerald-600 ${syncingWeather ? 'animate-spin' : 'animate-pulse'}`} />
                 📡 Clima en Vivo (Huancayo)
               </span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded font-mono font-bold bg-teal-900/80 text-teal-300 border border-teal-500/40">
+              <span className="text-[10px] px-1.5 py-0.5 rounded font-mono font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
                 Satélite
               </span>
             </div>
-            <p className="text-[11px] text-teal-200/90 mt-1 line-clamp-2 leading-relaxed">
+            <p className="text-[11px] text-slate-600 mt-1 line-clamp-2 leading-relaxed">
               Descarga el clima actual en el valle directo del satélite meteorológico.
             </p>
           </button>
@@ -375,15 +375,15 @@ export default function PredictEvening() {
       {/* =========================================================================
           NORMAN PHYSICAL CONSTRAINTS: CORRIDOR VALIDATION & EXCLUSION LIMITS
          ========================================================================= */}
-      <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 shadow-lg space-y-3">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-2">
+      <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs space-y-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-2">
           <div className="flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-emerald-400" />
-            <h2 className="text-xs font-bold text-white uppercase tracking-wider">
+            <MapPin className="w-4 h-4 text-emerald-600" />
+            <h2 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
               Zona de Cobertura: Valle del Mantaro
             </h2>
           </div>
-          <span className="text-[11px] text-emerald-400 font-mono">
+          <span className="text-[11px] text-emerald-700 font-mono font-semibold">
             Altitud válida: 3,150 – 3,450 msnm
           </span>
         </div>
@@ -402,21 +402,21 @@ export default function PredictEvening() {
                 }}
                 className={`p-2.5 text-left rounded-lg border transition-all cursor-pointer relative ${
                   isSelected
-                    ? 'border-emerald-400 bg-emerald-950/50 shadow-md shadow-emerald-950/60 ring-1 ring-emerald-400/50'
-                    : 'border-slate-800 bg-slate-950/60 hover:border-slate-700 hover:bg-slate-900/60'
+                    ? 'border-emerald-400 bg-emerald-50 text-emerald-950 shadow-xs ring-1 ring-emerald-400'
+                    : 'border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className={`text-xs font-bold ${isSelected ? 'text-emerald-300' : 'text-slate-200'}`}>
+                  <span className={`text-xs font-bold ${isSelected ? 'text-emerald-900' : 'text-slate-800'}`}>
                     {zone.name}
                   </span>
                   {zone.isReference && (
-                    <span className="text-[9px] bg-emerald-900/80 border border-emerald-500/50 text-emerald-200 px-1 py-0.5 rounded font-mono font-semibold">
+                    <span className="text-[9px] bg-emerald-100 border border-emerald-300 text-emerald-800 px-1 py-0.5 rounded font-mono font-semibold">
                       IGP REF
                     </span>
                   )}
                 </div>
-                <div className="text-[11px] font-mono text-emerald-400 mt-1">
+                <div className="text-[11px] font-mono text-emerald-700 font-semibold mt-1">
                   {zone.elevation} msnm
                 </div>
               </button>
@@ -425,19 +425,19 @@ export default function PredictEvening() {
         </div>
 
         {/* Collapsible Excluded Zones Accordion */}
-        <div className="border border-slate-800/80 rounded-lg overflow-hidden bg-slate-950/50">
+        <div className="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
           <button
             type="button"
             onClick={() => setShowExcludedZones((prev) => !prev)}
-            className="w-full px-3.5 py-2 flex items-center justify-between text-left hover:bg-slate-900/40 transition-colors cursor-pointer"
+            className="w-full px-3.5 py-2 flex items-center justify-between text-left hover:bg-slate-100 transition-colors cursor-pointer"
           >
             <div className="flex items-center gap-2">
-              <AlertTriangle className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span className="text-xs font-medium text-slate-300">
+              <AlertTriangle className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+              <span className="text-xs font-medium text-slate-700">
                 ¿Por qué este pronóstico solo aplica al valle y no a la puna o selva?
               </span>
             </div>
-            <div className="flex items-center gap-1.5 text-slate-400">
+            <div className="flex items-center gap-1.5 text-slate-500">
               <span className="text-[11px]">
                 {showExcludedZones ? 'Ocultar' : 'Ver explicación'}
               </span>
@@ -450,8 +450,8 @@ export default function PredictEvening() {
           </button>
 
           {showExcludedZones && (
-            <div className="p-3 border-t border-slate-800/80 space-y-2 bg-slate-950/80">
-              <p className="text-xs text-slate-300">
+            <div className="p-3 border-t border-slate-200 space-y-2 bg-white">
+              <p className="text-xs text-slate-600">
                 El modelo fue entrenado con datos de la estación del Observatorio IGP Huancayo (3,314 msnm). En altitudes mayores a 3,700 msnm (puna) o en la selva, el clima, la presión y los vientos son muy diferentes a los del fondo del valle:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 pt-1">
@@ -460,13 +460,13 @@ export default function PredictEvening() {
                     key={exZone.id}
                     type="button"
                     onClick={() => handleSelectExcludedZone(exZone)}
-                    className="p-2.5 text-left rounded-lg border border-red-900/40 bg-red-950/20 hover:bg-red-950/40 hover:border-red-500/50 transition-all text-xs text-slate-300"
+                    className="p-2.5 text-left rounded-lg border border-red-200 bg-red-50/60 hover:bg-red-100/70 transition-all text-xs text-slate-700 cursor-pointer"
                   >
-                    <div className="font-bold text-red-300 flex items-center justify-between">
+                    <div className="font-bold text-red-800 flex items-center justify-between">
                       <span>{exZone.name}</span>
-                      <span className="text-[10px] font-mono text-red-400">{exZone.altitudeRange}</span>
+                      <span className="text-[10px] font-mono text-red-600">{exZone.altitudeRange}</span>
                     </div>
-                    <p className="text-[11px] text-slate-400 mt-1 line-clamp-2">
+                    <p className="text-[11px] text-slate-600 mt-1 line-clamp-2">
                       {exZone.reason}
                     </p>
                   </button>
@@ -479,47 +479,47 @@ export default function PredictEvening() {
 
       {/* Visual Live Synchronization Banner */}
       {liveSyncBanner && (
-        <div className="p-3.5 rounded-xl border border-cyan-500/50 bg-gradient-to-r from-cyan-950/60 via-slate-900/80 to-blue-950/60 shadow-xl space-y-2 relative">
+        <div className="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/90 shadow-xs space-y-2 relative">
           <button
             type="button"
             onClick={() => setLiveSyncBanner(null)}
-            className="absolute top-2.5 right-2.5 text-slate-400 hover:text-white cursor-pointer"
+            className="absolute top-2.5 right-2.5 text-slate-400 hover:text-slate-700 cursor-pointer"
             title="Cerrar banner"
           >
             <X className="w-4 h-4" />
           </button>
 
           <div className="flex items-center gap-2">
-            <Radio className="w-4 h-4 text-cyan-400 animate-pulse" />
-            <h3 className="text-xs font-bold text-cyan-200">
+            <Radio className="w-4 h-4 text-emerald-600 animate-pulse" />
+            <h3 className="text-xs font-bold text-emerald-900">
               Datos meteorológicos en vivo sincronizados para {liveSyncBanner.zoneName} ({liveSyncBanner.elevation} msnm)
             </h3>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2 pt-1">
-            <div className="bg-slate-950/80 p-2 rounded border border-slate-800 text-left">
-              <span className="text-[10px] text-slate-400 uppercase block font-semibold">TT 18:00</span>
-              <span className="text-sm font-mono font-bold text-cyan-300">{liveSyncBanner.data.TT_18} °C</span>
+            <div className="bg-white p-2 rounded border border-emerald-200 text-left">
+              <span className="text-[10px] text-slate-500 uppercase block font-semibold">TT 18:00</span>
+              <span className="text-sm font-mono font-bold text-slate-900">{liveSyncBanner.data.TT_18} °C</span>
             </div>
-            <div className="bg-slate-950/80 p-2 rounded border border-slate-800 text-left">
-              <span className="text-[10px] text-slate-400 uppercase block font-semibold">HR 18:00</span>
-              <span className="text-sm font-mono font-bold text-cyan-300">{liveSyncBanner.data.HR_18} %</span>
+            <div className="bg-white p-2 rounded border border-emerald-200 text-left">
+              <span className="text-[10px] text-slate-500 uppercase block font-semibold">HR 18:00</span>
+              <span className="text-sm font-mono font-bold text-slate-900">{liveSyncBanner.data.HR_18} %</span>
             </div>
-            <div className="bg-slate-950/80 p-2 rounded border border-slate-800 text-left">
-              <span className="text-[10px] text-slate-400 uppercase block font-semibold">PP 18:00</span>
-              <span className="text-sm font-mono font-bold text-cyan-300">{liveSyncBanner.data.PP_18} hPa</span>
+            <div className="bg-white p-2 rounded border border-emerald-200 text-left">
+              <span className="text-[10px] text-slate-500 uppercase block font-semibold">PP 18:00</span>
+              <span className="text-sm font-mono font-bold text-slate-900">{liveSyncBanner.data.PP_18} hPa</span>
             </div>
-            <div className="bg-slate-950/80 p-2 rounded border border-slate-800 text-left">
-              <span className="text-[10px] text-slate-400 uppercase block font-semibold">FF 18:00</span>
-              <span className="text-sm font-mono font-bold text-cyan-300">{liveSyncBanner.data.FF_18} m/s</span>
+            <div className="bg-white p-2 rounded border border-emerald-200 text-left">
+              <span className="text-[10px] text-slate-500 uppercase block font-semibold">FF 18:00</span>
+              <span className="text-sm font-mono font-bold text-slate-900">{liveSyncBanner.data.FF_18} m/s</span>
             </div>
-            <div className="bg-slate-950/80 p-2 rounded border border-slate-800 text-left">
-              <span className="text-[10px] text-slate-400 uppercase block font-semibold">Tmin Hoy</span>
-              <span className="text-sm font-mono font-bold text-cyan-300">{liveSyncBanner.data.T_min_today} °C</span>
+            <div className="bg-white p-2 rounded border border-emerald-200 text-left">
+              <span className="text-[10px] text-slate-500 uppercase block font-semibold">Tmin Hoy</span>
+              <span className="text-sm font-mono font-bold text-slate-900">{liveSyncBanner.data.T_min_today} °C</span>
             </div>
-            <div className="bg-slate-950/80 p-2 rounded border border-slate-800 text-left">
-              <span className="text-[10px] text-slate-400 uppercase block font-semibold">Lluvia Tarde</span>
-              <span className="text-sm font-mono font-bold text-cyan-300">{liveSyncBanner.data.RR_afternoon || 0} mm</span>
+            <div className="bg-white p-2 rounded border border-emerald-200 text-left">
+              <span className="text-[10px] text-slate-500 uppercase block font-semibold">Lluvia Tarde</span>
+              <span className="text-sm font-mono font-bold text-slate-900">{liveSyncBanner.data.RR_afternoon || 0} mm</span>
             </div>
           </div>
         </div>
@@ -541,18 +541,18 @@ export default function PredictEvening() {
         <div className="lg:col-span-7 space-y-4">
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* ETAPA 1: AMANECER DE HOY (00:00 - 07:00 h) */}
-            <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 shadow-md text-left">
-              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2 mb-3">
+            <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs text-left">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-2 mb-3">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-md bg-indigo-600/20 text-indigo-400 flex items-center justify-center font-bold text-xs">
+                  <div className="w-6 h-6 rounded-md bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-xs">
                     1
                   </div>
-                  <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-                    <Sunrise className="w-3.5 h-3.5 text-indigo-400" />
+                  <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                    <Sunrise className="w-3.5 h-3.5 text-indigo-600" />
                     Etapa 1: Amanecer de Hoy (Madrugada Anterior)
                   </h3>
                 </div>
-                <span className="text-[11px] text-indigo-300/90 font-medium">
+                <span className="text-[11px] text-indigo-700 font-medium">
                   Calor acumulado en el suelo
                 </span>
               </div>
@@ -587,18 +587,18 @@ export default function PredictEvening() {
             </div>
 
             {/* ETAPA 2: TARDE DE HOY (12:00 - 18:00 h) */}
-            <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 shadow-md text-left">
-              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2 mb-3">
+            <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs text-left">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-2 mb-3">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-md bg-amber-600/20 text-amber-400 flex items-center justify-center font-bold text-xs">
+                  <div className="w-6 h-6 rounded-md bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-xs">
                     2
                   </div>
-                  <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-                    <Sun className="w-3.5 h-3.5 text-amber-400" />
+                  <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                    <Sun className="w-3.5 h-3.5 text-amber-600" />
                     Etapa 2: Tarde de Hoy (12:00 PM a 6:00 PM)
                   </h3>
                 </div>
-                <span className="text-[11px] text-amber-300/90 font-medium">
+                <span className="text-[11px] text-amber-700 font-medium">
                   Lluvia y humedad de la tarde
                 </span>
               </div>
@@ -634,18 +634,18 @@ export default function PredictEvening() {
             </div>
 
             {/* ETAPA 3: CORTE VESPERTINO CLAVE (18:00 h) */}
-            <div className="bg-slate-900/90 border-2 border-emerald-500/40 rounded-xl p-4 shadow-lg text-left space-y-3">
-              <div className="flex items-center justify-between border-b border-emerald-500/30 pb-2">
+            <div className="bg-white border-2 border-emerald-300 rounded-xl p-4 shadow-xs text-left space-y-3">
+              <div className="flex items-center justify-between border-b border-emerald-200 pb-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-md bg-emerald-600/30 text-emerald-300 flex items-center justify-center font-bold text-xs">
+                  <div className="w-6 h-6 rounded-md bg-emerald-50 text-emerald-800 flex items-center justify-center font-bold text-xs">
                     3
                   </div>
-                  <h3 className="text-xs font-bold text-emerald-200 uppercase tracking-wider flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-emerald-400" />
+                  <h3 className="text-xs font-bold text-emerald-900 uppercase tracking-wider flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-emerald-700" />
                     Etapa 3: Mediciones de las 6:00 PM (Al Atardecer)
                   </h3>
                 </div>
-                <span className="text-[11px] font-bold text-emerald-300 font-mono bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/40">
+                <span className="text-[11px] font-bold text-emerald-800 font-mono bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                   Lectura Principal
                 </span>
               </div>
@@ -729,27 +729,27 @@ export default function PredictEvening() {
                 />
               </div>
 
-              {/* REAL-TIME FEEDBACK: LIVE DEW POINT & DEPRESSION CALCULATION */}
+              {/* REAL-TIME FEEDBACK: LIVE DEW POINT */}
               {dewPointAnalysis && (
-                <div className={`p-3 rounded-lg border text-left space-y-1.5 transition-all ${dewPointAnalysis.badgeClass}`}>
+                <div className={`p-3 rounded-lg border text-left space-y-1.5 transition-all bg-emerald-50 border-emerald-200 text-emerald-950`}>
                   <div className="flex items-center justify-between flex-wrap gap-2">
-                    <span className="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
-                      <Droplets className="w-3.5 h-3.5" />
+                    <span className="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 text-emerald-900">
+                      <Droplets className="w-3.5 h-3.5 text-emerald-700" />
                       {dewPointAnalysis.label}
                     </span>
-                    <div className="flex items-center gap-3 font-mono text-xs font-semibold">
+                    <div className="flex items-center gap-3 font-mono text-xs font-semibold text-emerald-900">
                       <span>Punto Rocío: <strong>{dewPointAnalysis.dewPoint} °C</strong></span>
-                      <span>Depresión: <strong>{dewPointAnalysis.depression} °C</strong></span>
+                      <span>Sequedad: <strong>{dewPointAnalysis.depression} °C</strong></span>
                     </div>
                   </div>
-                  <p className="text-[11px] text-slate-200 leading-snug">
+                  <p className="text-[11px] text-emerald-800 leading-snug">
                     {dewPointAnalysis.advice}
                   </p>
                 </div>
               )}
             </div>
 
-            {/* Actions: Execute & Reset (Nielsen H3) */}
+            {/* Actions: Execute & Reset */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
               <Button
                 type="button"
@@ -757,7 +757,7 @@ export default function PredictEvening() {
                 size="md"
                 icon={RotateCcw}
                 onClick={handleResetForm}
-                className="w-full sm:w-auto text-slate-300 border-slate-700 hover:bg-slate-800"
+                className="w-full sm:w-auto text-slate-700 border-slate-300 bg-white hover:bg-slate-50 cursor-pointer shadow-xs"
               >
                 Restablecer formulario
               </Button>
@@ -768,7 +768,7 @@ export default function PredictEvening() {
                 size="lg"
                 loading={loading}
                 icon={Sparkles}
-                className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 shadow-lg shadow-emerald-950 font-bold text-white px-6 py-2.5 rounded-xl cursor-pointer"
+                className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-xs px-6 py-2.5 rounded-xl cursor-pointer"
               >
                 {loading ? 'Calculando Pronóstico...' : 'Ejecutar Pronóstico de Helada'}
               </Button>
@@ -779,25 +779,25 @@ export default function PredictEvening() {
         {/* Right Column: Stage 4 - Ficha de Recomendaciones Agrícolas */}
         <div className="lg:col-span-5 space-y-4">
           {result ? (
-            <div className="bg-slate-900/90 border-2 border-emerald-500/30 rounded-2xl p-6 shadow-2xl space-y-5 text-left">
+            <div className="bg-white border-2 border-emerald-300 rounded-2xl p-6 shadow-xs space-y-5 text-left">
               {/* Header result */}
-              <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-200">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-md bg-emerald-600/20 text-emerald-300 flex items-center justify-center font-bold text-xs">
+                  <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs">
                     4
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-white">
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-900">
                     Recomendaciones para Proteger tus Cultivos
                   </span>
                 </div>
-                <span className="text-[11px] font-medium text-emerald-300 bg-slate-950 px-2.5 py-0.5 rounded-full border border-slate-800">
+                <span className="text-[11px] font-medium text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
                   Madrugada de Mañana (5:30 AM)
                 </span>
               </div>
 
               {/* Giant Thermal Gauge */}
-              <div className="text-center py-5 px-4 bg-slate-950/90 rounded-xl border border-slate-800 relative overflow-hidden">
-                <div className="text-xs text-slate-300 font-semibold tracking-wider uppercase">
+              <div className="text-center py-5 px-4 bg-slate-50 rounded-xl border border-slate-200 relative overflow-hidden">
+                <div className="text-xs text-slate-600 font-semibold tracking-wider uppercase">
                   Temperatura Mínima Esperada al Amanecer
                 </div>
 
@@ -805,10 +805,10 @@ export default function PredictEvening() {
                 <div
                   className={`text-6xl font-black font-mono my-2 tracking-tight ${
                     result.predictedTminC <= 1.0
-                      ? 'text-red-400 drop-shadow-[0_0_20px_rgba(248,113,113,0.3)]'
+                      ? 'text-red-600'
                       : result.predictedTminC <= 2.0
-                      ? 'text-amber-400 drop-shadow-[0_0_20px_rgba(251,191,36,0.3)]'
-                      : 'text-emerald-400 drop-shadow-[0_0_20px_rgba(52,211,153,0.3)]'
+                      ? 'text-amber-600'
+                      : 'text-emerald-700'
                   }`}
                 >
                   {result.predictedTminC.toFixed(2)} °C
@@ -819,7 +819,7 @@ export default function PredictEvening() {
                 </div>
 
                 {/* Plain-Spanish Diagnosis for Valley Farmers */}
-                <p className="text-xs text-slate-200 mt-3 max-w-sm mx-auto leading-relaxed">
+                <p className="text-xs text-slate-700 mt-3 max-w-sm mx-auto leading-relaxed font-medium">
                   {result.predictedTminC <= 0
                     ? '⚠️ HELADA FUERTE: Congelará el agua y quemará las hojas en los campos. Se deben tomar medidas inmediatas.'
                     : result.predictedTminC <= 2.0
@@ -830,32 +830,32 @@ export default function PredictEvening() {
 
               {/* Simple Model Explanation */}
               <div className="space-y-2">
-                <div className="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center justify-between">
+                <div className="text-[11px] font-bold text-slate-600 uppercase tracking-wider flex items-center justify-between">
                   <span>¿Cómo se calculó la temperatura?</span>
-                  <span className="text-emerald-400 font-medium">Modelo Inteligente</span>
+                  <span className="text-emerald-700 font-medium">Modelo Inteligente</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2.5">
-                  <div className="p-3 rounded-lg border border-slate-800 bg-slate-950/70">
-                    <div className="text-[10px] uppercase font-bold text-slate-400">
+                  <div className="p-3 rounded-lg border border-slate-200 bg-slate-50">
+                    <div className="text-[10px] uppercase font-bold text-slate-500">
                       Pronóstico Base
                     </div>
-                    <div className="text-xl font-bold font-mono text-slate-100 mt-1">
+                    <div className="text-xl font-bold font-mono text-slate-900 mt-1">
                       {result.baseRidgeC.toFixed(2)} °C
                     </div>
-                    <div className="text-[10px] text-slate-400 mt-0.5">
+                    <div className="text-[10px] text-slate-500 mt-0.5">
                       Enfriamiento natural del cielo
                     </div>
                   </div>
 
-                  <div className="p-3 rounded-lg border border-slate-800 bg-slate-950/70">
-                    <div className="text-[10px] uppercase font-bold text-slate-400">
+                  <div className="p-3 rounded-lg border border-slate-200 bg-slate-50">
+                    <div className="text-[10px] uppercase font-bold text-slate-500">
                       Ajuste por Viento y Humedad
                     </div>
-                    <div className="text-xl font-bold font-mono text-teal-300 mt-1">
+                    <div className="text-xl font-bold font-mono text-emerald-700 mt-1">
                       {result.residualRfC >= 0 ? `+${result.residualRfC.toFixed(2)}` : result.residualRfC.toFixed(2)} °C
                     </div>
-                    <div className="text-[10px] text-slate-400 mt-0.5">
+                    <div className="text-[10px] text-slate-500 mt-0.5">
                       Condición local del valle
                     </div>
                   </div>
@@ -863,33 +863,33 @@ export default function PredictEvening() {
               </div>
 
               {/* Thermal Mitigation Actions for Mantaro Corridor */}
-              <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 space-y-3">
-                <div className="flex items-center gap-2 text-xs font-bold text-emerald-300 uppercase tracking-wider">
-                  <ShieldAlert className="w-4 h-4 text-emerald-400" />
+              <div className="p-4 rounded-xl border border-emerald-200 bg-emerald-50/70 space-y-3">
+                <div className="flex items-center gap-2 text-xs font-bold text-emerald-900 uppercase tracking-wider">
+                  <ShieldAlert className="w-4 h-4 text-emerald-700" />
                   <span>Qué Hacer Para Cuidar la Chacra</span>
                 </div>
 
-                <div className="space-y-2 text-xs text-slate-200">
-                  <div className="p-2.5 rounded bg-slate-950/70 border border-slate-800">
-                    <span className="font-bold text-amber-300 block">
+                <div className="space-y-2 text-xs text-slate-800">
+                  <div className="p-2.5 rounded bg-white border border-emerald-200">
+                    <span className="font-bold text-amber-800 block">
                       🌊 Riego preventivo por aspersión (2:00 AM):
                     </span>
                     {result.predictedTminC <= 1.0 ? (
-                      <p className="mt-0.5 text-slate-300 leading-relaxed">
+                      <p className="mt-0.5 text-slate-700 leading-relaxed">
                         Prender el <strong>riego por aspersión a las 2:00 AM</strong>. Al congelarse el agua en la superficie libera calor natural y evita que la hoja se congele por dentro.
                       </p>
                     ) : (
-                      <p className="mt-0.5 text-slate-300 leading-relaxed">
+                      <p className="mt-0.5 text-slate-700 leading-relaxed">
                         Mantener la tierra húmeda para que guarde calor. Vigilar parcelas en partes bajas de Chupaca y Sicaya.
                       </p>
                     )}
                   </div>
 
-                  <div className="p-2.5 rounded bg-slate-950/70 border border-slate-800">
-                    <span className="font-bold text-amber-300 block">
+                  <div className="p-2.5 rounded bg-white border border-emerald-200">
+                    <span className="font-bold text-amber-800 block">
                       🛡️ Mantas y cubiertas para el cultivo:
                     </span>
-                    <p className="mt-0.5 text-slate-300 leading-relaxed">
+                    <p className="mt-0.5 text-slate-700 leading-relaxed">
                       {result.predictedTminC <= 1.5
                         ? 'Tapar los cultivos sensibles con mantas térmicas agryl antes de las 7:00 PM para evitar que el calor se escape hacia el cielo.'
                         : 'Condiciones normales. No es necesario colocar mantas térmicas.'}
@@ -898,20 +898,20 @@ export default function PredictEvening() {
                 </div>
 
                 {/* Cronograma Nocturno */}
-                <div className="pt-2 border-t border-emerald-500/20 text-[11px] text-slate-300 space-y-1">
-                  <span className="font-bold text-slate-200 block">⏰ Horarios Clave para Esta Noche:</span>
+                <div className="pt-2 border-t border-emerald-200 text-[11px] text-slate-700 space-y-1">
+                  <span className="font-bold text-slate-900 block">⏰ Horarios Clave para Esta Noche:</span>
                   <div className="grid grid-cols-3 gap-1.5 font-mono text-center">
-                    <div className="bg-slate-950/80 p-1.5 rounded border border-slate-800">
-                      <span className="text-slate-400 block text-[10px]">10:00 PM</span>
-                      <span className="text-slate-200">Revisar cielo</span>
+                    <div className="bg-white p-1.5 rounded border border-slate-200">
+                      <span className="text-slate-500 block text-[10px]">10:00 PM</span>
+                      <span className="text-slate-800 font-semibold">Revisar cielo</span>
                     </div>
-                    <div className="bg-slate-950/80 p-1.5 rounded border border-slate-800">
-                      <span className="text-amber-400 block text-[10px]">02:00 AM</span>
-                      <span className="text-amber-300 font-bold">Activar Riego</span>
+                    <div className="bg-white p-1.5 rounded border border-slate-200">
+                      <span className="text-amber-700 block text-[10px]">02:00 AM</span>
+                      <span className="text-amber-800 font-bold">Activar Riego</span>
                     </div>
-                    <div className="bg-slate-950/80 p-1.5 rounded border border-slate-800">
-                      <span className="text-red-400 block text-[10px]">05:30 AM</span>
-                      <span className="text-red-300 font-bold">Pico Más Frío</span>
+                    <div className="bg-white p-1.5 rounded border border-slate-200">
+                      <span className="text-red-700 block text-[10px]">05:30 AM</span>
+                      <span className="text-red-800 font-bold">Pico Más Frío</span>
                     </div>
                   </div>
                 </div>
@@ -927,8 +927,8 @@ export default function PredictEvening() {
                   onClick={handleCopySummary}
                   className={`w-full ${
                     copied
-                      ? 'bg-emerald-600 hover:bg-emerald-500'
-                      : 'bg-slate-800 hover:bg-slate-700 text-white'
+                      ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                      : 'bg-slate-800 hover:bg-slate-900 text-white cursor-pointer'
                   }`}
                 >
                   {copied ? '¡Recomendaciones Copiadas!' : 'Copiar Resumen para WhatsApp o SMS'}
@@ -936,15 +936,15 @@ export default function PredictEvening() {
               </div>
             </div>
           ) : (
-            <div className="bg-slate-900/40 border border-dashed border-slate-800 rounded-2xl p-8 text-center flex flex-col items-center justify-center min-h-[420px] space-y-3">
-              <Layers className="w-14 h-14 text-slate-700" />
-              <h4 className="text-sm font-bold text-slate-200">
+            <div className="bg-white border border-dashed border-slate-300 rounded-2xl p-8 text-center flex flex-col items-center justify-center min-h-[420px] space-y-3 shadow-xs">
+              <Layers className="w-14 h-14 text-slate-400" />
+              <h4 className="text-sm font-bold text-slate-800">
                 Esperando Ejecución del Pronóstico
               </h4>
-              <p className="text-xs text-slate-400 max-w-xs leading-relaxed">
+              <p className="text-xs text-slate-500 max-w-xs leading-relaxed">
                 Seleccione uno de los <strong>ejemplos rápidos</strong> arriba o ingrese las lecturas de las 6:00 PM y haga clic en "Ejecutar Pronóstico de Helada".
               </p>
-              <div className="flex items-center gap-2 text-[11px] text-emerald-400 font-medium pt-2">
+              <div className="flex items-center gap-2 text-[11px] text-emerald-700 font-medium pt-2">
                 <span>Obs. Huancayo IGP • 3,314 msnm</span>
               </div>
             </div>

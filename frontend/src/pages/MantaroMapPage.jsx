@@ -377,25 +377,25 @@ export default function MantaroMapPage() {
          ========================================================================= */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
         {/* LEAFLET MAP CONTAINER (7 cols on large screens) */}
-        <div className="lg:col-span-7 bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl relative">
+        <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs relative">
           {/* Map Header Toolbar */}
-          <div className="p-3.5 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+          <div className="p-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-cyan-400" />
-              <span className="text-xs font-bold text-white uppercase tracking-wider">
+              <MapPin className="w-4 h-4 text-emerald-600" />
+              <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
                 Geovisualizador de Estaciones • Cuenca del Mantaro
               </span>
             </div>
             <div className="flex items-center gap-2 text-[11px] font-mono">
-              <span className="flex items-center gap-1 text-red-400">
+              <span className="flex items-center gap-1 text-red-600 font-bold">
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
                 &le; 1°C
               </span>
-              <span className="flex items-center gap-1 text-amber-400">
+              <span className="flex items-center gap-1 text-amber-700 font-bold">
                 <span className="w-2 h-2 rounded-full bg-amber-500"></span>
                 &le; 2°C
               </span>
-              <span className="flex items-center gap-1 text-emerald-400">
+              <span className="flex items-center gap-1 text-emerald-700 font-bold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
                 &gt; 2°C
               </span>
@@ -409,7 +409,7 @@ export default function MantaroMapPage() {
               zoom={DEFAULT_ZOOM}
               scrollWheelZoom={true}
               className="h-full w-full"
-              style={{ background: '#020617' }}
+              style={{ background: '#f8fafc' }}
             >
               <MapController
                 center={[selectedStation.latitude, selectedStation.longitude]}
@@ -425,15 +425,15 @@ export default function MantaroMapPage() {
               <Polygon
                 positions={CORRIDOR_POLYGON}
                 pathOptions={{
-                  color: '#06b6d4',
+                  color: '#059669',
                   weight: 2,
                   dashArray: '6, 6',
-                  fillColor: '#0891b2',
+                  fillColor: '#10b981',
                   fillOpacity: 0.12
                 }}
               >
                 <Tooltip sticky direction="center">
-                  <div className="font-sans text-[11px] font-bold text-cyan-950">
+                  <div className="font-sans text-[11px] font-bold text-emerald-950">
                     Corredor Agrícola Mantaro (3,150 – 3,450 msnm)
                   </div>
                 </Tooltip>
@@ -480,7 +480,7 @@ export default function MantaroMapPage() {
                           <div className="font-bold flex items-center gap-1">
                             {station.name.split(' (')[0]}
                             {station.isReference && (
-                              <span className="text-[9px] bg-cyan-700 text-white px-1 rounded font-mono">
+                              <span className="text-[9px] bg-emerald-700 text-white px-1 rounded font-mono">
                                 IGP
                               </span>
                             )}
@@ -496,7 +496,7 @@ export default function MantaroMapPage() {
 
                       <Popup className="custom-dark-popup">
                         <div className="p-1 text-slate-900 font-sans text-xs">
-                          <div className="font-bold text-sm text-cyan-900">{station.name}</div>
+                          <div className="font-bold text-sm text-emerald-900">{station.name}</div>
                           <div className="text-slate-600 text-[11px]">{station.station}</div>
                           <div className="mt-2 pt-1 border-t border-slate-200 grid grid-cols-2 gap-1 font-mono text-[11px]">
                             <div>TT 18:00: <strong>{weather?.TT_18 ?? '--'} °C</strong></div>
@@ -507,7 +507,7 @@ export default function MantaroMapPage() {
                           <button
                             type="button"
                             onClick={() => setSelectedStationId(station.id)}
-                            className="mt-2.5 w-full py-1 text-center bg-cyan-600 text-white rounded font-medium text-[11px] hover:bg-cyan-700"
+                            className="mt-2.5 w-full py-1 text-center bg-emerald-600 text-white rounded font-medium text-[11px] hover:bg-emerald-700 cursor-pointer"
                           >
                             Ver Detalles y Telemetría
                           </button>
@@ -521,7 +521,7 @@ export default function MantaroMapPage() {
           </div>
 
           {/* Station Quick Selector Bar below map */}
-          <div className="p-3 bg-slate-950 border-t border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <div className="p-3 bg-slate-50 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-2">
             {MANTARO_CORRIDOR_ZONES.map((zone) => {
               const weather = stationWeather[zone.id];
               const alert = getThermalAlert(weather?.TT_18);
@@ -532,26 +532,26 @@ export default function MantaroMapPage() {
                   key={zone.id}
                   type="button"
                   onClick={() => setSelectedStationId(zone.id)}
-                  className={`p-2 rounded-xl border text-left transition-all ${
+                  className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-cyan-950/60 border-cyan-500/50 shadow-md shadow-cyan-950/30 ring-1 ring-cyan-500/30'
-                      : 'bg-slate-900/60 border-slate-800 hover:border-slate-700'
+                      ? 'bg-emerald-50 border-emerald-400 shadow-xs ring-1 ring-emerald-400'
+                      : 'bg-white border-slate-200 hover:bg-slate-50'
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-bold text-white truncate">
+                    <span className="text-[11px] font-bold text-slate-900 truncate">
                       {zone.name.split(' (')[0]}
                     </span>
                     <span
-                      className="w-2 h-2 rounded-full shrink-0"
+                      className="w-2.5 h-2.5 rounded-full shrink-0"
                       style={{ backgroundColor: alert.dotColor }}
                     />
                   </div>
                   <div className="mt-1 flex items-baseline justify-between font-mono">
-                    <span className="text-xs text-cyan-300 font-bold">
+                    <span className="text-xs text-emerald-800 font-bold">
                       {weather?.TT_18 !== undefined ? `${weather.TT_18}°C` : '--'}
                     </span>
-                    <span className="text-[10px] text-slate-400">
+                    <span className="text-[10px] text-slate-500 font-medium">
                       {zone.elevation}m
                     </span>
                   </div>
@@ -563,24 +563,24 @@ export default function MantaroMapPage() {
 
         {/* DETAIL DRAWER / CARD (5 cols on large screens) */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="bg-slate-900/90 border-2 border-cyan-500/40 rounded-2xl p-5 shadow-2xl space-y-4 text-left">
+          <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-4 text-left">
             {/* Header: Station identity */}
-            <div className="flex items-start justify-between gap-3 pb-3 border-b border-slate-800">
+            <div className="flex items-start justify-between gap-3 pb-3 border-b border-slate-200">
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="text-base font-bold text-white">
+                  <h3 className="text-base font-bold text-slate-900">
                     {selectedStation.name}
                   </h3>
                   {selectedStation.isReference && (
-                    <span className="text-[10px] bg-cyan-950 text-cyan-300 border border-cyan-500/40 px-1.5 py-0.5 rounded font-mono font-bold">
+                    <span className="text-[10px] bg-emerald-100 text-emerald-800 border border-emerald-300 px-1.5 py-0.5 rounded font-mono font-bold">
                       BASE IGP
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-slate-400 mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   {selectedStation.station} • UBIGEO: {selectedStation.ubigeo}
                 </p>
-                <div className="flex items-center gap-3 mt-1 text-[11px] text-slate-400 font-mono">
+                <div className="flex items-center gap-3 mt-1 text-[11px] text-slate-500 font-mono">
                   <span>Prov. {selectedStation.province}</span>
                   <span>•</span>
                   <span>{selectedStation.elevation} msnm</span>
@@ -596,12 +596,12 @@ export default function MantaroMapPage() {
             </div>
 
             {/* Thermal Alert Notice */}
-            <div className="p-3 bg-slate-950/70 border border-slate-800 rounded-xl space-y-1">
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-200">
-                <ShieldAlert className="w-3.5 h-3.5 text-cyan-400" />
+            <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-800">
+                <ShieldAlert className="w-3.5 h-3.5 text-emerald-600" />
                 <span>Diagnóstico Térmico Vespertino:</span>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed">
+              <p className="text-xs text-slate-600 leading-relaxed">
                 {selectedAlert.description}
               </p>
             </div>
@@ -609,58 +609,58 @@ export default function MantaroMapPage() {
             {/* Real-time Telemetry Grid */}
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
                   Métricas en Vivo (Corte 18:00 h)
                 </span>
-                <span className="text-[10px] text-cyan-400 font-mono">
-                  Open-Meteo ECMWF/GFS
+                <span className="text-[10px] text-emerald-700 font-mono font-semibold">
+                  Open-Meteo Satelital
                 </span>
               </div>
 
               <div className="grid grid-cols-2 gap-2 text-xs">
                 {/* TT 18:00 */}
-                <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <div className="flex items-center gap-1.5 text-slate-400 text-[11px]">
-                    <Thermometer className="w-3.5 h-3.5 text-cyan-400" />
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="flex items-center gap-1.5 text-slate-500 text-[11px]">
+                    <Thermometer className="w-3.5 h-3.5 text-emerald-600" />
                     <span>Temp. Aire (TT 18h)</span>
                   </div>
-                  <div className="mt-1 text-lg font-bold font-mono text-white">
+                  <div className="mt-1 text-lg font-bold font-mono text-slate-900">
                     {selectedWeather?.TT_18 !== undefined ? `${selectedWeather.TT_18} °C` : '--'}
                   </div>
                   <span className="text-[10px] text-slate-500">Sensor a 2m del suelo</span>
                 </div>
 
                 {/* HR 18:00 */}
-                <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <div className="flex items-center gap-1.5 text-slate-400 text-[11px]">
-                    <Droplets className="w-3.5 h-3.5 text-blue-400" />
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="flex items-center gap-1.5 text-slate-500 text-[11px]">
+                    <Droplets className="w-3.5 h-3.5 text-blue-600" />
                     <span>Humedad Relativa</span>
                   </div>
-                  <div className="mt-1 text-lg font-bold font-mono text-white">
+                  <div className="mt-1 text-lg font-bold font-mono text-slate-900">
                     {selectedWeather?.HR_18 !== undefined ? `${selectedWeather.HR_18} %` : '--'}
                   </div>
                   <span className="text-[10px] text-slate-500">Corte sincrónico</span>
                 </div>
 
                 {/* Surface Pressure */}
-                <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <div className="flex items-center gap-1.5 text-slate-400 text-[11px]">
-                    <Gauge className="w-3.5 h-3.5 text-indigo-400" />
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="flex items-center gap-1.5 text-slate-500 text-[11px]">
+                    <Gauge className="w-3.5 h-3.5 text-indigo-600" />
                     <span>Presión Barométrica</span>
                   </div>
-                  <div className="mt-1 text-lg font-bold font-mono text-white">
+                  <div className="mt-1 text-lg font-bold font-mono text-slate-900">
                     {selectedWeather?.PP_18 !== undefined ? `${selectedWeather.PP_18} hPa` : '--'}
                   </div>
-                  <span className="text-[10px] text-slate-500">Piso barométrico andino</span>
+                  <span className="text-[10px] text-slate-500">Presión normal andina</span>
                 </div>
 
                 {/* Wind */}
-                <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <div className="flex items-center gap-1.5 text-slate-400 text-[11px]">
-                    <Wind className="w-3.5 h-3.5 text-teal-400" />
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="flex items-center gap-1.5 text-slate-500 text-[11px]">
+                    <Wind className="w-3.5 h-3.5 text-teal-600" />
                     <span>Velocidad de Viento</span>
                   </div>
-                  <div className="mt-1 text-lg font-bold font-mono text-white">
+                  <div className="mt-1 text-lg font-bold font-mono text-slate-900">
                     {selectedWeather?.FF_18 !== undefined ? `${selectedWeather.FF_18} m/s` : '--'}
                   </div>
                   <span className="text-[10px] text-slate-500">
@@ -669,53 +669,53 @@ export default function MantaroMapPage() {
                 </div>
 
                 {/* Min Temp Today */}
-                <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <div className="flex items-center gap-1.5 text-slate-400 text-[11px]">
-                    <ThermometerSnowflake className="w-3.5 h-3.5 text-cyan-300" />
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="flex items-center gap-1.5 text-slate-500 text-[11px]">
+                    <ThermometerSnowflake className="w-3.5 h-3.5 text-cyan-600" />
                     <span>Mínima de Hoy</span>
                   </div>
-                  <div className="mt-1 text-base font-bold font-mono text-cyan-200">
+                  <div className="mt-1 text-base font-bold font-mono text-slate-900">
                     {selectedWeather?.T_min_today !== undefined ? `${selectedWeather.T_min_today} °C` : '--'}
                   </div>
                   <span className="text-[10px] text-slate-500">00:00 – 07:00 h</span>
                 </div>
 
                 {/* Precipitation */}
-                <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <div className="flex items-center gap-1.5 text-slate-400 text-[11px]">
-                    <CloudRain className="w-3.5 h-3.5 text-sky-400" />
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="flex items-center gap-1.5 text-slate-500 text-[11px]">
+                    <CloudRain className="w-3.5 h-3.5 text-sky-600" />
                     <span>Lluvia Tarde / 24h</span>
                   </div>
-                  <div className="mt-1 text-base font-bold font-mono text-white">
+                  <div className="mt-1 text-base font-bold font-mono text-slate-900">
                     {selectedWeather?.RR_afternoon ?? '0.0'} / {selectedWeather?.RR_24h ?? '0.0'} mm
                   </div>
-                  <span className="text-[10px] text-slate-500">Amortiguamiento térmico</span>
+                  <span className="text-[10px] text-slate-500">Efecto protector de lluvia</span>
                 </div>
               </div>
             </div>
 
-            {/* Dew Point & Inversion Analysis */}
-            <div className="p-3 rounded-xl bg-cyan-950/20 border border-cyan-500/30 space-y-1.5">
+            {/* Dew Point Analysis */}
+            <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 space-y-1">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-cyan-300">
-                  Punto de Rocío (Td): {selectedDewPoint.dewPoint} °C
+                <span className="font-bold text-emerald-900">
+                  Punto de Rocío: {selectedDewPoint.dewPoint} °C
                 </span>
-                <span className="text-[11px] font-mono text-slate-400">
-                  Depresión: {selectedDewPoint.depression} °C
+                <span className="text-[11px] font-mono text-slate-600">
+                  Sequedad: {selectedDewPoint.depression} °C
                 </span>
               </div>
-              <p className="text-[11px] text-slate-300">
-                Régimen identificado: <strong>{selectedDewPoint.type}</strong>.
+              <p className="text-[11px] text-slate-700">
+                Condición: <strong>{selectedDewPoint.type}</strong>.
               </p>
             </div>
 
             {/* Thermal Mitigation Protocol */}
-            <div className="p-3.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 space-y-2">
-              <div className="flex items-center gap-2 text-xs font-bold text-emerald-300 uppercase tracking-wider">
-                <ShieldAlert className="w-4 h-4 text-emerald-400" />
-                <span>Acciones de Mitigación Térmica Recomendadas</span>
+            <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-emerald-900 uppercase tracking-wider">
+                <ShieldAlert className="w-4 h-4 text-emerald-700" />
+                <span>Recomendaciones para el Agricultor</span>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed">
+              <p className="text-xs text-slate-700 leading-relaxed">
                 {selectedAlert.mitigationAction}
               </p>
             </div>
@@ -728,11 +728,11 @@ export default function MantaroMapPage() {
                 size="lg"
                 icon={Sparkles}
                 onClick={handleLoadInPredictor}
-                className="w-full bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold shadow-lg shadow-emerald-950/60 py-3 rounded-xl cursor-pointer"
+                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-xs py-3 rounded-xl cursor-pointer"
               >
                 ⚡ Usar estos datos para pronosticar mañana
               </Button>
-              <p className="text-[11px] text-slate-400 text-center mt-2">
+              <p className="text-[11px] text-slate-500 text-center mt-2">
                 Transfiere automáticamente las lecturas de {selectedStation.name.split(' (')[0]} al motor inteligente de pronóstico.
               </p>
             </div>

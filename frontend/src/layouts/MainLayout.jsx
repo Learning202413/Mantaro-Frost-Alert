@@ -5,11 +5,11 @@ import Header from '../components/Header';
 
 export default function MainLayout() {
   return (
-    <div className="flex min-h-screen bg-slate-950 text-slate-100">
+    <div className="flex min-h-screen bg-slate-50 text-slate-800">
       <Sidebar />
       <div className="flex-1 flex flex-col min-w-0">
         <Header />
-        <main className="flex-1 overflow-y-auto">
+        <main className="flex-1 overflow-y-auto bg-slate-50/60">
           <Outlet />
         </main>
       </div>

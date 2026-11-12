@@ -85,19 +85,19 @@ export default function StationDataExplorer() {
       </div>
 
       {/* Filter and Description */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-slate-900/80 border border-slate-800 p-4 rounded-xl shadow-sm">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white border border-slate-200 p-4 rounded-xl shadow-xs">
         <div>
-          <h4 className="text-xs font-bold text-slate-100 uppercase tracking-wider">
+          <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
             Registros Meteorológicos Históricos de Huancayo
           </h4>
-          <p className="text-xs text-slate-300 mt-0.5">
+          <p className="text-xs text-slate-600 mt-0.5">
             Elige cualquier día para cargar sus lecturas de las 6:00 PM y ver cómo reacciona el pronóstico de heladas.
           </p>
         </div>
 
         <div className="flex items-center gap-1.5">
           <span className="text-xs text-slate-500 font-medium mr-1 flex items-center gap-1">
-            <Filter className="w-3.5 h-3.5" /> Tipo:
+            <Filter className="w-3.5 h-3.5 text-slate-400" /> Tipo:
           </span>
           {[
             { id: 'ALL', label: 'Todos' },
@@ -110,8 +110,8 @@ export default function StationDataExplorer() {
               onClick={() => setSelectedFilter(f.id)}
               className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                 selectedFilter === f.id
-                  ? 'bg-cyan-600 text-white'
-                  : 'bg-slate-800/60 text-slate-400 hover:text-white'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200'
               }`}
             >
               {f.label}
@@ -121,10 +121,10 @@ export default function StationDataExplorer() {
       </div>
 
       {/* Explorer Table */}
-      <div className="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900/60 shadow-xl">
+      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-xs">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-slate-800 bg-slate-900/90 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+            <tr className="border-b border-slate-200 bg-slate-50 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
               <th className="py-3 px-3.5">Fecha</th>
               <th className="py-3 px-3.5">Hora</th>
               <th className="py-3 px-3.5">Temp (TT)</th>
@@ -136,7 +136,7 @@ export default function StationDataExplorer() {
               <th className="py-3 px-3.5 text-right">Acción</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800/60 text-xs">
+          <tbody className="divide-y divide-slate-200 text-xs">
             {filteredRows.map((r) => {
               const isFrost = r.scenario.includes('Severa');
               const isYellow = r.scenario.includes('Amarilla');
@@ -144,37 +144,37 @@ export default function StationDataExplorer() {
               return (
                 <tr
                   key={r.id}
-                  className="hover:bg-slate-800/40 transition-colors text-slate-300"
+                  className="hover:bg-slate-50 transition-colors text-slate-700"
                 >
-                  <td className="py-3 px-3.5 font-medium text-slate-200">
+                  <td className="py-3 px-3.5 font-medium text-slate-900">
                     {r.year}-{String(r.month).padStart(2, '0')}-{String(r.day).padStart(2, '0')}
                   </td>
-                  <td className="py-3 px-3.5 font-mono text-slate-400">
+                  <td className="py-3 px-3.5 font-mono text-slate-500">
                     {String(r.hour).padStart(2, '0')}:00 h
                   </td>
-                  <td className="py-3 px-3.5 font-mono font-bold text-slate-200">
+                  <td className="py-3 px-3.5 font-mono font-bold text-slate-900">
                     {r.tt.toFixed(2)} °C
                   </td>
-                  <td className="py-3 px-3.5 font-mono text-slate-300">
+                  <td className="py-3 px-3.5 font-mono text-slate-700">
                     {r.hr.toFixed(1)} %
                   </td>
-                  <td className="py-3 px-3.5 font-mono text-slate-400">
+                  <td className="py-3 px-3.5 font-mono text-slate-500">
                     {r.pp.toFixed(1)} hPa
                   </td>
-                  <td className="py-3 px-3.5 font-mono text-slate-400">
+                  <td className="py-3 px-3.5 font-mono text-slate-500">
                     {r.ff.toFixed(2)} m/s
                   </td>
-                  <td className="py-3 px-3.5 font-mono text-slate-400">
+                  <td className="py-3 px-3.5 font-mono text-slate-500">
                     {r.dd.toFixed(1)}°
                   </td>
                   <td className="py-3 px-3.5">
                     <span
                       className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border ${
                         isFrost
-                          ? 'bg-red-500/20 text-red-300 border-red-500/30'
+                          ? 'bg-red-50 text-red-700 border-red-300'
                           : isYellow
-                          ? 'bg-amber-500/20 text-amber-300 border-amber-500/30'
-                          : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+                          ? 'bg-amber-50 text-amber-800 border-amber-300'
+                          : 'bg-emerald-50 text-emerald-800 border-emerald-300'
                       }`}
                     >
                       {r.scenario}

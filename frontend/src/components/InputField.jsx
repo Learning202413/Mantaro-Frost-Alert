@@ -39,11 +39,11 @@ export default function InputField({
         <div className="flex items-center justify-between gap-1 text-xs">
           <label
             htmlFor={id || name}
-            className="font-bold text-slate-200 flex items-center gap-1.5 cursor-pointer"
+            className="font-bold text-slate-700 flex items-center gap-1.5 cursor-pointer"
           >
             <span>{label}</span>
             {required && (
-              <span className="text-cyan-400 font-bold" title="Campo obligatorio">
+              <span className="text-emerald-600 font-bold" title="Campo obligatorio">
                 *
               </span>
             )}
@@ -54,16 +54,16 @@ export default function InputField({
               <button
                 type="button"
                 onClick={() => setShowExplanation((prev) => !prev)}
-                className="text-slate-400 hover:text-cyan-300 p-0.5 rounded transition-colors focus:outline-none"
+                className="text-slate-400 hover:text-emerald-600 p-0.5 rounded transition-colors focus:outline-none"
                 title="Ver explicación en lenguaje del agricultor"
                 aria-label="Ayuda para agricultores"
               >
-                <HelpCircle className="w-3.5 h-3.5 text-cyan-400/80 hover:text-cyan-300" />
+                <HelpCircle className="w-3.5 h-3.5 text-emerald-600/80 hover:text-emerald-700" />
               </button>
             )}
 
             {unit && (
-              <span className="px-1.5 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px] font-semibold">
+              <span className="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-700 font-mono text-[11px] font-semibold">
                 {unit}
               </span>
             )}
@@ -72,7 +72,7 @@ export default function InputField({
       )}
 
       {/* Input container with Norman Affordances */}
-      <div className="relative rounded-lg shadow-sm">
+      <div className="relative rounded-lg shadow-xs">
         <input
           id={id || name}
           name={name}
@@ -85,19 +85,19 @@ export default function InputField({
           min={min}
           max={max}
           disabled={disabled}
-          className={`w-full rounded-lg bg-slate-900/90 border px-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 font-mono transition-all duration-150 focus:outline-none focus:ring-2 ${
+          className={`w-full rounded-lg bg-white border px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 font-mono transition-all duration-150 focus:outline-none focus:ring-2 ${
             error
-              ? 'border-red-500 focus:border-red-500 focus:ring-red-500/40 bg-red-950/20'
+              ? 'border-red-400 focus:border-red-500 focus:ring-red-500/20 bg-red-50/50'
               : isOutOfRange
-              ? 'border-amber-400/80 focus:border-amber-400 focus:ring-amber-400/30 bg-amber-950/20 text-amber-200'
-              : 'border-slate-700/80 hover:border-slate-600 focus:border-cyan-400 focus:ring-cyan-500/30'
+              ? 'border-amber-400 focus:border-amber-500 focus:ring-amber-500/20 bg-amber-50/50 text-amber-900'
+              : 'border-slate-300 hover:border-slate-400 focus:border-emerald-600 focus:ring-emerald-500/20'
           } ${unit ? 'pr-14' : ''}`}
         />
 
         {/* Distinct Unit Badge (Affordance) */}
         {unit && (
           <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-            <span className="text-xs font-semibold font-mono text-cyan-400/90 bg-slate-800/90 px-1.5 py-0.5 rounded border border-slate-700/70">
+            <span className="text-xs font-semibold font-mono text-emerald-800 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
               {unit}
             </span>
           </div>
@@ -106,8 +106,8 @@ export default function InputField({
 
       {/* Norman Explanation Banner for Farmers */}
       {showExplanation && farmerExplanation && (
-        <div className="p-2.5 rounded-lg bg-cyan-950/50 border border-cyan-500/30 text-cyan-200 text-xs leading-relaxed animate-in fade-in-50">
-          <span className="font-bold text-cyan-300 block mb-0.5">🌾 Significado para el cultivo:</span>
+        <div className="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs leading-relaxed animate-in fade-in-50">
+          <span className="font-bold text-emerald-800 block mb-0.5">🌾 Significado para el cultivo:</span>
           {farmerExplanation}
         </div>
       )}

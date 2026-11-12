@@ -11,22 +11,22 @@ export default function KpiCard({
   className = ''
 }) {
   const colorMap = {
-    cyan: 'border-cyan-500/20 bg-cyan-950/20 text-cyan-400',
-    red: 'border-red-500/30 bg-red-950/20 text-red-400',
-    amber: 'border-amber-500/20 bg-amber-950/20 text-amber-400',
-    emerald: 'border-emerald-500/20 bg-emerald-950/20 text-emerald-400',
-    indigo: 'border-indigo-500/20 bg-indigo-950/20 text-indigo-400',
-    slate: 'border-slate-800 bg-slate-900/60 text-slate-400'
+    cyan: 'border-cyan-200 bg-cyan-50 text-cyan-700',
+    red: 'border-red-200 bg-red-50 text-red-700',
+    amber: 'border-amber-200 bg-amber-50 text-amber-700',
+    emerald: 'border-emerald-200 bg-emerald-50 text-emerald-700',
+    indigo: 'border-indigo-200 bg-indigo-50 text-indigo-700',
+    slate: 'border-slate-200 bg-slate-100 text-slate-700'
   };
 
-  const currentTheme = colorMap[color] || colorMap.cyan;
+  const currentTheme = colorMap[color] || colorMap.emerald;
 
   return (
     <div
-      className={`relative overflow-hidden rounded-xl border p-4.5 transition-all hover:border-slate-700 bg-slate-900/70 backdrop-blur-sm ${className}`}
+      className={`relative overflow-hidden rounded-xl border border-slate-200 bg-white p-4.5 transition-all hover:border-slate-300 hover:shadow-md shadow-xs ${className}`}
     >
       <div className="flex items-center justify-between gap-3">
-        <span className="text-xs font-medium uppercase tracking-wider text-slate-400">
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
           {title}
         </span>
         {Icon && (
@@ -37,19 +37,19 @@ export default function KpiCard({
       </div>
 
       <div className="mt-2.5 flex items-baseline gap-1.5">
-        <span className="text-2xl font-bold tracking-tight text-white font-mono">
+        <span className="text-2xl font-black tracking-tight text-slate-900 font-mono">
           {value}
         </span>
         {unit && (
-          <span className="text-sm font-medium text-slate-400 font-mono">
+          <span className="text-sm font-semibold text-slate-500 font-mono">
             {unit}
           </span>
         )}
       </div>
 
       {(subtitle || trend) && (
-        <div className="mt-1.5 flex items-center gap-1.5 text-xs text-slate-400">
-          {trend && <span className="font-semibold">{trend}</span>}
+        <div className="mt-1.5 flex items-center gap-1.5 text-xs text-slate-600">
+          {trend && <span className="font-bold text-slate-900">{trend}</span>}
           {subtitle && <span>{subtitle}</span>}
         </div>
       )}

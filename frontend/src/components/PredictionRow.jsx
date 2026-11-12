@@ -19,36 +19,36 @@ export default function PredictionRow({
   const alert = p.alertLevel || p.AlertLevel || 'GREEN';
 
   return (
-    <tr className="border-b border-slate-800/80 hover:bg-slate-800/40 transition-colors text-xs text-slate-300">
-      <td className="py-3 px-3.5 font-mono text-slate-400 font-semibold">
+    <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors text-xs text-slate-700">
+      <td className="py-3 px-3.5 font-mono text-slate-500 font-semibold">
         #{p.id || p.Id || '-'}
       </td>
-      <td className="py-3 px-3.5 font-medium text-slate-200">
+      <td className="py-3 px-3.5 font-medium text-slate-900">
         <div>{cutoff}</div>
-        <div className="text-[10px] text-slate-500">18:00 Horas</div>
+        <div className="text-[10px] text-slate-500 font-normal">18:00 Horas</div>
       </td>
-      <td className="py-3 px-3.5 font-medium text-slate-200">
+      <td className="py-3 px-3.5 font-medium text-slate-900">
         <div>{target}</div>
-        <div className="text-[10px] text-slate-500">06:00 Horas</div>
+        <div className="text-[10px] text-slate-500 font-normal">06:00 Horas</div>
       </td>
-      <td className="py-3 px-3.5 font-mono text-slate-300">
+      <td className="py-3 px-3.5 font-mono text-slate-800">
         {typeof tt18 === 'number' ? `${tt18.toFixed(1)} °C` : tt18}
       </td>
-      <td className="py-3 px-3.5 font-mono text-slate-300">
+      <td className="py-3 px-3.5 font-mono text-slate-800">
         {typeof hr18 === 'number' ? `${hr18.toFixed(0)} %` : hr18}
       </td>
       <td className="py-3 px-3.5 font-mono font-bold text-sm">
         <span
           className={
-            tmin <= 1.0 ? 'text-red-400' : tmin <= 2.0 ? 'text-amber-400' : 'text-emerald-400'
+            tmin <= 1.0 ? 'text-red-700' : tmin <= 2.0 ? 'text-amber-700' : 'text-emerald-700'
           }
         >
           {typeof tmin === 'number' ? `${tmin.toFixed(2)} °C` : tmin}
         </span>
       </td>
-      <td className="py-3 px-3.5 font-mono text-[11px] text-slate-400">
-        <div>Base: <span className="text-slate-300">{Number(baseRidge).toFixed(2)}</span></div>
-        <div>RF: <span className="text-cyan-400">{Number(residualRf) >= 0 ? `+${Number(residualRf).toFixed(2)}` : Number(residualRf).toFixed(2)}</span></div>
+      <td className="py-3 px-3.5 font-mono text-[11px] text-slate-500">
+        <div>Base: <span className="text-slate-800 font-medium">{Number(baseRidge).toFixed(2)}</span></div>
+        <div>RF: <span className="text-emerald-700 font-medium">{Number(residualRf) >= 0 ? `+${Number(residualRf).toFixed(2)}` : Number(residualRf).toFixed(2)}</span></div>
       </td>
       <td className="py-3 px-3.5">
         <StatusBadge level={alert} size="sm" />
@@ -59,7 +59,7 @@ export default function PredictionRow({
             <button
               onClick={() => onSelect(p)}
               title="Ver detalle y recomendaciones agronómicas"
-              className="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-cyan-400 transition-colors cursor-pointer"
+              className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-600 hover:text-emerald-700 transition-colors cursor-pointer shadow-2xs"
             >
               <ExternalLink className="w-3.5 h-3.5" />
             </button>
@@ -68,7 +68,7 @@ export default function PredictionRow({
             <button
               onClick={() => onDelete(p.id || p.Id)}
               title="Eliminar registro"
-              className="p-1.5 rounded hover:bg-red-950/60 text-slate-400 hover:text-red-400 transition-colors cursor-pointer"
+              className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-red-50 text-slate-500 hover:text-red-600 transition-colors cursor-pointer shadow-2xs"
             >
               <Trash2 className="w-3.5 h-3.5" />
             </button>

@@ -5,6 +5,7 @@ import MantaroMapPage from './pages/MantaroMapPage';
 import PredictEvening from './pages/PredictEvening';
 import PredictionHistory from './pages/PredictionHistory';
 import StationDataExplorer from './pages/StationDataExplorer';
+import ModelTransparency from './pages/ModelTransparency';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="predict" element={<PredictEvening />} />
           <Route path="history" element={<PredictionHistory />} />
           <Route path="explorer" element={<StationDataExplorer />} />
+          <Route path="model" element={<ModelTransparency />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

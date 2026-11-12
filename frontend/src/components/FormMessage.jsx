@@ -11,19 +11,19 @@ export default function FormMessage({
 
   const configs = {
     success: {
-      bgClass: 'bg-emerald-950/60 border-emerald-500/40 text-emerald-200',
+      bgClass: 'bg-emerald-50 border-emerald-200 text-emerald-900',
       icon: CheckCircle2,
-      iconClass: 'text-emerald-400'
+      iconClass: 'text-emerald-600'
     },
     error: {
-      bgClass: 'bg-red-950/60 border-red-500/40 text-red-200',
+      bgClass: 'bg-red-50 border-red-200 text-red-900',
       icon: AlertCircle,
-      iconClass: 'text-red-400'
+      iconClass: 'text-red-600'
     },
     info: {
-      bgClass: 'bg-cyan-950/60 border-cyan-500/40 text-cyan-200',
+      bgClass: 'bg-cyan-50 border-cyan-200 text-cyan-900',
       icon: Info,
-      iconClass: 'text-cyan-400'
+      iconClass: 'text-cyan-600'
     }
   };
 
@@ -32,7 +32,7 @@ export default function FormMessage({
 
   return (
     <div
-      className={`flex items-start justify-between gap-3 p-3.5 rounded-lg border text-sm backdrop-blur-sm ${config.bgClass} ${className}`}
+      className={`flex items-start justify-between gap-3 p-3.5 rounded-lg border text-sm ${config.bgClass} ${className}`}
     >
       <div className="flex items-start gap-2.5">
         <IconComponent className={`w-5 h-5 shrink-0 mt-0.5 ${config.iconClass}`} />
@@ -42,7 +42,7 @@ export default function FormMessage({
         <button
           onClick={onClose}
           type="button"
-          className="text-slate-400 hover:text-white transition-colors cursor-pointer"
+          className="text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>

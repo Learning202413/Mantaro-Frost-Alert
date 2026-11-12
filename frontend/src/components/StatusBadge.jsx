@@ -9,24 +9,24 @@ export default function StatusBadge({ level, size = 'md', showIcon = true }) {
 
   let config = {
     label: 'Sin Riesgo (> 2.0°C)',
-    colorClass: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
+    colorClass: 'bg-emerald-50 text-emerald-800 border-emerald-300 font-semibold shadow-xs',
     icon: ShieldCheck,
-    dotColor: 'bg-emerald-400'
+    dotColor: 'bg-emerald-500'
   };
 
   if (isRed) {
     config = {
       label: 'Peligro Crítico (<= 1.0°C)',
-      colorClass: 'bg-red-500/20 text-red-300 border-red-500/40 animate-pulse',
+      colorClass: 'bg-red-50 text-red-700 border-red-300 font-semibold shadow-xs animate-pulse',
       icon: ShieldAlert,
-      dotColor: 'bg-red-500'
+      dotColor: 'bg-red-600'
     };
   } else if (isYellow) {
     config = {
       label: 'Alerta Temprana (<= 2.0°C)',
-      colorClass: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
+      colorClass: 'bg-amber-50 text-amber-800 border-amber-300 font-semibold shadow-xs',
       icon: AlertTriangle,
-      dotColor: 'bg-amber-400'
+      dotColor: 'bg-amber-500'
     };
   }
 

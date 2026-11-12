@@ -13,7 +13,7 @@ export const PRESET_SCENARIOS = [
     level: 'ROJO',
     description: 'Noche de invierno muy seca y con cielo despejado. El calor del suelo escapa rápidamente hacia el espacio.',
     badge: 'ROJO • Alerta Máxima',
-    badgeClass: 'bg-red-500/15 text-red-200 border-red-500/40 hover:bg-red-500/25',
+    badgeClass: 'bg-red-50 text-red-900 border-red-200 hover:bg-red-100/80 shadow-xs',
     data: {
       airTemp18: 9.27,
       relativeHumidity18: 49.0,
@@ -34,7 +34,7 @@ export const PRESET_SCENARIOS = [
     level: 'AMARILLO',
     description: 'Atardecer fresco con humedad moderada. Peligro de escarcha en las partes bajas y hondonadas del valle.',
     badge: 'AMARILLO • Prevención',
-    badgeClass: 'bg-amber-500/15 text-amber-200 border-amber-500/40 hover:bg-amber-500/25',
+    badgeClass: 'bg-amber-50 text-amber-900 border-amber-200 hover:bg-amber-100/80 shadow-xs',
     data: {
       airTemp18: 10.8,
       relativeHumidity18: 58.5,
@@ -55,7 +55,7 @@ export const PRESET_SCENARIOS = [
     level: 'VERDE',
     description: 'Cielo con nubes protectoras y humedad alta tras lluvia ligera. Los cultivos están seguros.',
     badge: 'VERDE • Seguro',
-    badgeClass: 'bg-emerald-500/15 text-emerald-200 border-emerald-500/40 hover:bg-emerald-500/25',
+    badgeClass: 'bg-emerald-50 text-emerald-900 border-emerald-200 hover:bg-emerald-100/80 shadow-xs',
     data: {
       airTemp18: 13.89,
       relativeHumidity18: 70.1,
