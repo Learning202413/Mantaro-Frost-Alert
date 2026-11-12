@@ -76,14 +76,6 @@ export default function Header() {
             <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono">
               v2.0 • Huancayo
             </span>
-            {/* Evaluator Quick HCI Tag */}
-            <span
-              title="Cumplimiento con principios de Usabilidad y Diseño Centrado en el Usuario"
-              className="hidden lg:inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300"
-            >
-              <Award className="w-3 h-3 text-cyan-400" />
-              <span>Diseño Fácil y Accesible</span>
-            </span>
           </div>
           <p className="text-xs text-slate-300 flex items-center gap-1.5 flex-wrap">
             <span className="font-semibold text-emerald-400">Estación Meteorológica Huancayo (IGP)</span>

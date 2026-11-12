@@ -5,7 +5,6 @@ import {
   Sparkles,
   History,
   BarChart3,
-  Cpu,
   ThermometerSnowflake,
   GraduationCap
 } from 'lucide-react';
@@ -31,11 +30,6 @@ const NAV_ITEMS = [
     path: '/explorer',
     label: 'Explorador de Datos EMA - IGP Huancayo',
     icon: BarChart3
-  },
-  {
-    path: '/model',
-    label: 'Cómo Funciona el Sistema',
-    icon: Cpu
   }
 ];
 
