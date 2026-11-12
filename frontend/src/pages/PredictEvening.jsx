@@ -16,7 +16,6 @@ import {
   Sparkles,
   Thermometer,
   Layers,
-  Sprout,
   Radio,
   MapPin,
   ChevronDown,
@@ -36,7 +35,6 @@ import {
   Wind,
   Compass,
   Calendar,
-  Wheat,
   Clock,
   Award
 } from 'lucide-react';
@@ -50,7 +48,7 @@ const INITIAL_FORM = {
   minTempToday: '1.2',
   rrAfternoon: '0.0',
   date: '2026-06-25',
-  notes: 'Escenario de helada severa invernal en el fondo del Valle del Mantaro.'
+  notes: 'Monitoreo de inversión térmica y descenso radiativo nocturno en el fondo del Valle del Mantaro.'
 };
 
 export default function PredictEvening() {
@@ -70,7 +68,29 @@ export default function PredictEvening() {
   const [selectedExcludedZone, setSelectedExcludedZone] = useState(null);
 
   useEffect(() => {
-    if (location.state?.prefill) {
+    if (location.state?.weather) {
+      const w = location.state.weather;
+      const z = location.state.zone;
+      setFormData((prev) => ({
+        ...prev,
+        airTemp18: w.TT_18 !== undefined ? String(w.TT_18) : prev.airTemp18,
+        relativeHumidity18: w.HR_18 !== undefined ? String(w.HR_18) : prev.relativeHumidity18,
+        pressure18: w.PP_18 !== undefined ? String(w.PP_18) : prev.pressure18,
+        windSpeed18: w.FF_18 !== undefined ? String(w.FF_18) : prev.windSpeed18,
+        windDirection18: w.DD_18 !== undefined ? String(w.DD_18) : prev.windDirection18,
+        minTempToday: w.T_min_today !== undefined ? String(w.T_min_today) : prev.minTempToday,
+        rrAfternoon: w.RR_afternoon !== undefined ? String(w.RR_afternoon) : '0.0',
+        date: w.date || new Date().toISOString().split('T')[0],
+        notes: `Punto de monitoreo: ${z?.name || 'Estación'} (${z?.elevation || ''} msnm). Sincronizado desde Mapa Interactivo.`
+      }));
+      if (z?.id) {
+        setSelectedZone(z.id);
+      }
+      setMessage({
+        type: 'success',
+        text: `Datos agrometeorológicos sincronizados exitosamente desde el Mapa Interactivo: ${z?.name || 'Estación'}.`
+      });
+    } else if (location.state?.prefill) {
       setFormData((prev) => ({
         ...prev,
         ...location.state.prefill
@@ -112,18 +132,18 @@ export default function PredictEvening() {
       condition = 'white-frost';
       label = '⚠️ Riesgo Inminente de Helada Blanca (Escarcha)';
       advice =
-        'El vapor condensará y se congelará directamente sobre las hojas de papa y maíz. Formación de escarcha superficial.';
+        'El vapor condensará y se congelará directamente sobre las superficies expuestas. Formación de escarcha superficial por debajo de 0 °C.';
       badgeClass = 'text-amber-300 bg-amber-950/70 border-amber-500/40 animate-pulse';
     } else if (td < 0 && rh < 48) {
       condition = 'black-frost';
       label = '🚨 Riesgo Extremo de Helada Negra (Seca)';
       advice =
-        'Aire extremadamente seco sin escarcha visible. El frío penetrará quemando la savia y destruyendo el tejido foliar.';
+        'Aire extremadamente seco sin escarcha visible. Descenso térmico severo con alto gradiente de radiación terrestre.';
       badgeClass = 'text-red-300 bg-red-950/80 border-red-500/50 animate-pulse';
     } else if (td <= 2.0) {
       condition = 'cold-warning';
       label = '❄️ Condición Térmica Muy Fría';
-      advice = 'Vigilancia de temperaturas en parcelas bajas y hondonadas.';
+      advice = 'Vigilancia de temperaturas en cotas bajas y hondonadas del valle.';
       badgeClass = 'text-cyan-300 bg-cyan-950/60 border-cyan-500/30';
     }
 
@@ -269,16 +289,16 @@ export default function PredictEvening() {
   // Nielsen H3: Copy Summary to Clipboard
   const handleCopySummary = () => {
     if (!result) return;
-    const summaryText = `🌾 FICHA DE RESOLUCIÓN AGRÍCOLA - VALLE DEL MANTARO
+    const summaryText = `🛡️ FICHA DE MITIGACIÓN TÉRMICA - VALLE DEL MANTARO
 📅 Diana: ${result.targetDate || 'Madrugada D+1'} (05:30 h)
 🌡️ T. Mínima Pronosticada: ${result.predictedTminC?.toFixed(2)} °C
 🚨 Nivel de Alerta: ${result.alertLevel}
 🔬 Descomposición:
   • Piso Físico (Ridge): ${result.baseRidgeC?.toFixed(2)} °C
   • Residual Microclimático (Random Forest): ${result.residualRfC?.toFixed(2)} °C
-🚜 Acciones Inmediatas para el Agricultor:
-  - Papa: Activar riego por aspersión continuo a las 02:00 AM (80 cal/g calor latente).
-  - Maíz/Alcachofa: Encender quemadores perimetrales / cubrir con manta agryl 17 g/m².
+🛡️ Acciones de Mitigación Térmica en el Valle:
+  - Riego térmico preventivo: Activar aspersión continua a las 02:00 AM (80 cal/g calor latente de fusión).
+  - Cobertura térmica nocturna: Desplegar mantas agryl (17 g/m²) y monitoreo de inversión térmica en hondonadas.
 ℹ️ Sistema Mantaro Frost Alert • Observatorio Huayao IGP (3,314 msnm)`;
 
     navigator.clipboard.writeText(summaryText);
@@ -602,13 +622,13 @@ export default function PredictEvening() {
                 <InputField
                   id="notes"
                   name="notes"
-                  label="Condición de Parcela / Cultivo"
+                  label="Identificador de Estación / Punto de Monitoreo"
                   type="text"
-                  placeholder="Ej. Parcela Chupaca, floración papa"
+                  placeholder="Ej. Estación Chupaca - Huayao (3,314 msnm)"
                   value={formData.notes}
                   onChange={handleInputChange}
-                  helperText="Notas de campo para el registro histórico."
-                  farmerExplanation="Indique el estado fenológico (aporque, floración, llenado de grano) para adecuar la acción de rescate."
+                  helperText="Identificador del punto de observación para el registro histórico."
+                  farmerExplanation="Indique la ubicación o cota altitudinal para adecuar el protocolo de mitigación térmica."
                 />
               </div>
             </div>
@@ -705,7 +725,7 @@ export default function PredictEvening() {
                   value={formData.windDirection18}
                   onChange={handleInputChange}
                   helperText="270° = Oeste, 315° = Noroeste."
-                  farmerExplanation="En el valle, los vientos del oeste y noroeste bajan de las cordilleras secas y traen aire polar a los cultivos."
+                  farmerExplanation="En el valle, los vientos del oeste y noroeste bajan de las cordilleras secas e intensifican el enfriamiento radiativo nocturno."
                 />
               </div>
 
@@ -767,7 +787,7 @@ export default function PredictEvening() {
                     4
                   </div>
                   <span className="text-xs font-bold uppercase tracking-wider text-white">
-                    Ficha de Resolución Agrícola
+                    Ficha de Resolución Meteorológica &amp; Mitigación Térmica
                   </span>
                 </div>
                 <span className="text-[11px] font-mono text-cyan-300 bg-slate-950 px-2 py-0.5 rounded border border-slate-800">
@@ -798,13 +818,13 @@ export default function PredictEvening() {
                   <StatusBadge level={result.alertLevel} size="lg" />
                 </div>
 
-                {/* Plain-Spanish Diagnosis for Farmers */}
+                {/* Plain-Spanish Diagnosis for Valley Operators */}
                 <p className="text-xs text-slate-300 mt-3 max-w-sm mx-auto leading-relaxed">
                   {result.predictedTminC <= 0
-                    ? '⚠️ HELADA METEOROLÓGICA SEVERA: Agua celular congelará tejidos de hojas y flores.'
+                    ? '⚠️ HELADA METEOROLÓGICA SEVERA: Formación de hielo superficial y congelación del estrato rasante.'
                     : result.predictedTminC <= 2.0
-                    ? '❄️ RIESGO DE ESCARCHA AGRONÓMICA: Aire frío en el suelo afectará hondonadas y parcelas bajas.'
-                    : '✅ CONDICIÓN TÉRMICA SEGURA: Sin peligro de daño por bajas temperaturas al amanecer.'}
+                    ? '❄️ RIESGO DE ESCARCHA TÉRMICA: Aire frío en el suelo afectará hondonadas y cotas bajas del corredor.'
+                    : '✅ CONDICIÓN TÉRMICA SEGURA: Sin peligro de descenso térmico crítico al amanecer.'}
                 </p>
               </div>
 
@@ -842,40 +862,44 @@ export default function PredictEvening() {
                 </div>
               </div>
 
-              {/* Immediate Concrete Actions for Mantaro Crops */}
+              {/* Thermal Mitigation Actions for Mantaro Corridor */}
               <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 space-y-3">
                 <div className="flex items-center gap-2 text-xs font-bold text-emerald-300 uppercase tracking-wider">
-                  <Sprout className="w-4 h-4 text-emerald-400" />
-                  <span>Acciones Inmediatas para Cultivos del Valle</span>
+                  <ShieldAlert className="w-4 h-4 text-emerald-400" />
+                  <span>Acciones de Mitigación Térmica en el Valle</span>
                 </div>
 
                 <div className="space-y-2 text-xs text-slate-300">
-                  <div className="p-2 rounded bg-slate-950/60 border border-slate-800">
-                    <span className="font-bold text-amber-300 block">🥔 Papa (Canchán, Yungay, Peruanita):</span>
+                  <div className="p-2.5 rounded bg-slate-950/60 border border-slate-800">
+                    <span className="font-bold text-amber-300 block">
+                      🌊 Riego térmico preventivo (02:00 AM):
+                    </span>
                     {result.predictedTminC <= 1.0 ? (
                       <p className="mt-0.5 text-slate-300 leading-relaxed">
-                        Activar <strong>riego por aspersión continuo a las 02:00 AM</strong>. La congelación del agua sobre las hojas libera 80 cal/g de calor latente, protegiendo las células de la necrosis. En parcelas en floración, desplegar mantas térmicas agryl (17 g/m²) antes de las 19:00 h.
+                        Activar <strong>riego por aspersión continuo a las 02:00 AM</strong>. La transición de fase del agua a hielo libera 80 cal/g de calor latente de fusión, frenando la caída de temperatura del estrato de aire rasante.
                       </p>
                     ) : (
                       <p className="mt-0.5 text-slate-300 leading-relaxed">
-                        Mantener humedad superficial en aporque. Monitorear hondonadas de Chupaca y Sicaya.
+                        Mantener humedad superficial en el suelo para aumentar la capacidad calorífica del sustrato. Monitorear hondonadas de Chupaca y Sicaya.
                       </p>
                     )}
                   </div>
 
-                  <div className="p-2 rounded bg-slate-950/60 border border-slate-800">
-                    <span className="font-bold text-amber-300 block">🌽 Maíz Choclo &amp; Alcachofa:</span>
+                  <div className="p-2.5 rounded bg-slate-950/60 border border-slate-800">
+                    <span className="font-bold text-amber-300 block">
+                      🛡️ Cobertura térmica nocturna &amp; Monitoreo de inversión térmica:
+                    </span>
                     <p className="mt-0.5 text-slate-300 leading-relaxed">
                       {result.predictedTminC <= 1.5
-                        ? 'Encender quemadores de aserrín o generadores de niebla en el borde barlovento (noroeste) a las 03:00 AM para frenar el escape de radiación terrestre. Suspender fertilización nitrogenada.'
-                        : 'Condición controlada. Mantener labores ordinarias de riego.'}
+                        ? 'Desplegar mantas térmicas agryl (17 g/m²) antes de las 19:00 h para reducir el escape de radiación infrarroja terrestre. Monitorear gradientes verticales de temperatura e inversión térmica en el fondo del valle.'
+                        : 'Condición térmica estable. Mantener labores ordinarias de monitoreo meteorológico.'}
                     </p>
                   </div>
                 </div>
 
-                {/* Cronograma de Ronda Crítica */}
+                {/* Cronograma de Ronda Térmica Nocturna */}
                 <div className="pt-2 border-t border-emerald-500/20 text-[11px] text-slate-300 space-y-1">
-                  <span className="font-bold text-slate-200 block">⏰ Cronograma de Guardia en Parcela:</span>
+                  <span className="font-bold text-slate-200 block">⏰ Cronograma de Ronda Térmica Nocturna:</span>
                   <div className="grid grid-cols-3 gap-1.5 font-mono text-center">
                     <div className="bg-slate-950/80 p-1.5 rounded border border-slate-800">
                       <span className="text-slate-400 block text-[10px]">22:00 h</span>
@@ -883,7 +907,7 @@ export default function PredictEvening() {
                     </div>
                     <div className="bg-slate-950/80 p-1.5 rounded border border-slate-800">
                       <span className="text-amber-400 block text-[10px]">02:00 h</span>
-                      <span className="text-amber-300 font-bold">Riego ON</span>
+                      <span className="text-amber-300 font-bold">Riego Térmico ON</span>
                     </div>
                     <div className="bg-slate-950/80 p-1.5 rounded border border-slate-800">
                       <span className="text-red-400 block text-[10px]">05:30 h</span>

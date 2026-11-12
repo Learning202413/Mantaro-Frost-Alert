@@ -188,7 +188,7 @@ export default function ModelTransparency() {
                   H2: Relación entre el Sistema y el Mundo Real
                 </span>
                 <p className="text-slate-300 leading-relaxed">
-                  Uso de vocabulario agrícola del Mantaro (aporque de papa, helada blanca vs helada negra, riego por aspersión a 02:00 AM, calor latente de 80 cal/g) en lugar de métricas crudas de ML.
+                  Uso de vocabulario meteorológico y mitigación térmica del Mantaro (helada blanca vs helada negra, inversión térmica, riego térmico preventivo a 02:00 AM, calor latente de 80 cal/g, cobertura térmica) en lugar de métricas crudas de ML.
                 </p>
               </div>
 
@@ -410,7 +410,7 @@ export default function ModelTransparency() {
                   5. Modelo Conceptual Coherente
                 </span>
                 <p className="text-slate-300 leading-relaxed">
-                  Une el modelo mental del agricultor ("el frío que congela la papa al amanecer") con el modelo físico del sistema: la tierra pierde calor por radiación (Ridge) y el aire frío se drena hacia las hoyadas del Mantaro (Random Forest).
+                  Une el modelo mental del operador del valle ("el descenso térmico crítico en el valle al amanecer") con el modelo físico del sistema: la tierra pierde calor por radiación (Ridge) y el aire frío se drena hacia las hoyadas del Mantaro (Random Forest).
                 </p>
               </div>
             </div>

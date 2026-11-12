@@ -28,3 +28,6 @@ appsettings.Development.json
 *.log
 *.tar.gz
 *.zip
+
+# Cloudflare Wrangler
+.wrangler/

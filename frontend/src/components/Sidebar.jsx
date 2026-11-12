@@ -1,36 +1,40 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {
+  MapPin,
   Sparkles,
   History,
   BarChart3,
   Cpu,
-  Layers,
   ThermometerSnowflake,
-  ShieldAlert,
   GraduationCap
 } from 'lucide-react';
 
 const NAV_ITEMS = [
   {
     path: '/',
-    label: 'Predicción Vespertina',
-    icon: Sparkles,
-    badge: '18:00 h'
+    label: 'Mapa Interactivo del Valle',
+    icon: MapPin,
+    badge: 'En Vivo'
+  },
+  {
+    path: '/predict',
+    label: 'Predicción Vespertina (18:00 h)',
+    icon: Sparkles
   },
   {
     path: '/history',
-    label: 'Historial de Alertas',
+    label: 'Historial de Alertas Registradas',
     icon: History
   },
   {
     path: '/explorer',
-    label: 'Explorador EMA (IGP)',
+    label: 'Explorador de Datos EMA - IGP Huayao',
     icon: BarChart3
   },
   {
     path: '/model',
-    label: 'Transparencia Modelo',
+    label: 'Transparencia del Modelo ML & Marco HCI',
     icon: Cpu
   }
 ];

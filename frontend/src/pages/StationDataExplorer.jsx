@@ -29,8 +29,8 @@ export default function StationDataExplorer() {
   });
 
   const handleSimulateRow = (row) => {
-    // Navigate to / and populate form or set preset
-    navigate('/', {
+    // Navigate to /predict and populate form
+    navigate('/predict', {
       state: {
         prefill: {
           airTemp18: String(row.tt),
