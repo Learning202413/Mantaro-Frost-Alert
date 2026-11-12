@@ -31,8 +31,8 @@ export default function Header() {
         const res = await frostPredictionService.getHealth();
         const vpsMs = Math.round(performance.now() - startVps);
         setHealth({
-          backend: res?.database?.connected ?? true,
-          vps: res?.vpsMlService?.connected ?? true
+          backend: Boolean(res?.database?.connected),
+          vps: Boolean(res?.vpsMlService?.connected || res?.status === 'online' || res?.status === 'ok')
         });
         setLatency((prev) => ({ ...prev, vps: vpsMs }));
       } catch {

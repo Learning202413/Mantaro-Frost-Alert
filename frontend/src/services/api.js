@@ -107,6 +107,22 @@ export async function request(endpoint, options = {}) {
   }
 
   if (isHealth) {
+    try {
+      const vpsRes = await fetch(`${VPS_URL}/health`, { signal: AbortSignal.timeout(4000) });
+      if (vpsRes.ok) {
+        const vpsData = await vpsRes.json();
+        return {
+          status: 'online',
+          timestamp: new Date().toISOString(),
+          service: 'VPS Direct ML Fallback',
+          database: { connected: false, provider: 'Standalone ML Mode' },
+          vpsMlService: { connected: true, endpoint: VPS_URL, version: vpsData.version, details: vpsData }
+        };
+      }
+    } catch (e) {
+      console.warn('[API] VPS health check fallback failed:', e.message);
+    }
+
     return {
       status: 'offline',
       timestamp: new Date().toISOString(),
