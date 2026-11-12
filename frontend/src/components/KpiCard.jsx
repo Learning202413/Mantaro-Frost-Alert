@@ -23,34 +23,34 @@ export default function KpiCard({
 
   return (
     <div
-      className={`relative overflow-hidden rounded-xl border border-slate-200 bg-white p-4.5 transition-all hover:border-slate-300 hover:shadow-md shadow-xs ${className}`}
+      className={`relative overflow-hidden rounded-xl border border-slate-200 bg-white p-3 sm:p-4.5 transition-all hover:border-slate-300 hover:shadow-md shadow-xs ${className}`}
     >
-      <div className="flex items-center justify-between gap-3">
-        <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 truncate">
           {title}
         </span>
         {Icon && (
-          <div className={`p-2 rounded-lg border ${currentTheme}`}>
-            <Icon className="w-4 h-4 text-current" />
+          <div className={`p-1.5 sm:p-2 rounded-lg border ${currentTheme} shrink-0`}>
+            <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-current" />
           </div>
         )}
       </div>
 
-      <div className="mt-2.5 flex items-baseline gap-1.5">
-        <span className="text-2xl font-black tracking-tight text-slate-900 font-mono">
+      <div className="mt-2 flex items-baseline gap-1 sm:gap-1.5">
+        <span className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 font-mono truncate">
           {value}
         </span>
         {unit && (
-          <span className="text-sm font-semibold text-slate-500 font-mono">
+          <span className="text-xs sm:text-sm font-semibold text-slate-500 font-mono">
             {unit}
           </span>
         )}
       </div>
 
       {(subtitle || trend) && (
-        <div className="mt-1.5 flex items-center gap-1.5 text-xs text-slate-600">
-          {trend && <span className="font-bold text-slate-900">{trend}</span>}
-          {subtitle && <span>{subtitle}</span>}
+        <div className="mt-1 flex items-center gap-1.5 text-[11px] sm:text-xs text-slate-600 leading-tight">
+          {trend && <span className="font-bold text-slate-900 shrink-0">{trend}</span>}
+          {subtitle && <span className="truncate">{subtitle}</span>}
         </div>
       )}
     </div>

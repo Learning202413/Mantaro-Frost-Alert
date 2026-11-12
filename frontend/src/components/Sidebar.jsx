@@ -7,7 +7,8 @@ import {
   BarChart3,
   Cpu,
   ThermometerSnowflake,
-  GraduationCap
+  GraduationCap,
+  X
 } from 'lucide-react';
 
 const NAV_ITEMS = [
@@ -39,23 +40,35 @@ const NAV_ITEMS = [
   }
 ];
 
-export default function Sidebar() {
-  return (
-    <aside className="w-64 shrink-0 border-r border-slate-200 bg-white flex flex-col justify-between h-screen sticky top-0 shadow-xs">
+export default function Sidebar({ isOpen = false, onClose = () => {} }) {
+  const navContent = (isMobile = false) => (
+    <>
       <div>
         {/* Brand / Logo */}
-        <div className="flex items-center gap-3 px-5 py-4 border-b border-slate-200 bg-slate-50/80">
-          <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-xs">
-            <ThermometerSnowflake className="w-5 h-5" />
-          </div>
-          <div className="text-left">
-            <div className="text-sm font-bold text-slate-900 tracking-wide">
-              MANTARO FROST
+        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200 bg-slate-50/80">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-xs shrink-0">
+              <ThermometerSnowflake className="w-5 h-5" />
             </div>
-            <div className="text-[10px] text-emerald-700 font-semibold">
-              Alertas para el Agricultor
+            <div className="text-left">
+              <div className="text-sm font-bold text-slate-900 tracking-wide">
+                MANTARO FROST
+              </div>
+              <div className="text-[10px] text-emerald-700 font-semibold">
+                Alertas para el Agricultor
+              </div>
             </div>
           </div>
+          {isMobile && (
+            <button
+              type="button"
+              onClick={onClose}
+              className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 transition-colors cursor-pointer"
+              aria-label="Cerrar menú"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          )}
         </div>
 
         {/* Navigation list */}
@@ -69,6 +82,7 @@ export default function Sidebar() {
               <NavLink
                 key={item.path}
                 to={item.path}
+                onClick={isMobile ? onClose : undefined}
                 className={({ isActive }) =>
                   `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-150 ${
                     isActive
@@ -106,6 +120,32 @@ export default function Sidebar() {
           <span>Perú</span>
         </div>
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Desktop Sidebar (hidden on mobile) */}
+      <aside className="hidden md:flex flex-col justify-between w-64 shrink-0 border-r border-slate-200 bg-white h-screen sticky top-0 shadow-xs">
+        {navContent(false)}
+      </aside>
+
+      {/* Mobile Drawer with Backdrop */}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 md:hidden flex">
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity"
+            onClick={onClose}
+            aria-hidden="true"
+          />
+
+          {/* Slide-out drawer */}
+          <aside className="relative w-72 max-w-[85vw] bg-white border-r border-slate-200 shadow-2xl flex flex-col justify-between h-full z-10">
+            {navContent(true)}
+          </aside>
+        </div>
+      )}
+    </>
   );
 }

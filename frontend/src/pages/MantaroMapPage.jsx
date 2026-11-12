@@ -379,14 +379,14 @@ export default function MantaroMapPage() {
         {/* LEAFLET MAP CONTAINER (7 cols on large screens) */}
         <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs relative">
           {/* Map Header Toolbar */}
-          <div className="p-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+          <div className="p-3 bg-slate-50 border-b border-slate-200 flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-emerald-600" />
-              <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+              <MapPin className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span className="text-xs font-bold text-slate-800 uppercase tracking-wider truncate">
                 Geovisualizador de Estaciones • Cuenca del Mantaro
               </span>
             </div>
-            <div className="flex items-center gap-2 text-[11px] font-mono">
+            <div className="flex items-center gap-2 text-[11px] font-mono shrink-0">
               <span className="flex items-center gap-1 text-red-600 font-bold">
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
                 &le; 1°C
@@ -403,7 +403,7 @@ export default function MantaroMapPage() {
           </div>
 
           {/* Leaflet Map Area */}
-          <div className="h-[520px] w-full relative z-0">
+          <div className="h-[340px] sm:h-[420px] lg:h-[520px] w-full relative z-0">
             <MapContainer
               center={MAP_CENTER}
               zoom={DEFAULT_ZOOM}
@@ -580,7 +580,7 @@ export default function MantaroMapPage() {
                 <p className="text-xs text-slate-500 mt-0.5">
                   {selectedStation.station} • UBIGEO: {selectedStation.ubigeo}
                 </p>
-                <div className="flex items-center gap-3 mt-1 text-[11px] text-slate-500 font-mono">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-3 mt-1 text-[10px] sm:text-[11px] text-slate-500 font-mono">
                   <span>Prov. {selectedStation.province}</span>
                   <span>•</span>
                   <span>{selectedStation.elevation} msnm</span>

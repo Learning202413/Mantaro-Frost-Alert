@@ -779,31 +779,31 @@ export default function PredictEvening() {
         {/* Right Column: Stage 4 - Ficha de Recomendaciones Agrícolas */}
         <div className="lg:col-span-5 space-y-4">
           {result ? (
-            <div className="bg-white border-2 border-emerald-300 rounded-2xl p-6 shadow-xs space-y-5 text-left">
+            <div className="bg-white border-2 border-emerald-300 rounded-2xl p-4 sm:p-6 shadow-xs space-y-5 text-left">
               {/* Header result */}
-              <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+              <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs">
+                  <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs shrink-0">
                     4
                   </div>
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-900">
                     Recomendaciones para Proteger tus Cultivos
                   </span>
                 </div>
-                <span className="text-[11px] font-medium text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                <span className="text-[11px] font-medium text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 shrink-0">
                   Madrugada de Mañana (5:30 AM)
                 </span>
               </div>
 
               {/* Giant Thermal Gauge */}
-              <div className="text-center py-5 px-4 bg-slate-50 rounded-xl border border-slate-200 relative overflow-hidden">
+              <div className="text-center py-5 px-3 sm:px-4 bg-slate-50 rounded-xl border border-slate-200 relative overflow-hidden">
                 <div className="text-xs text-slate-600 font-semibold tracking-wider uppercase">
                   Temperatura Mínima Esperada al Amanecer
                 </div>
 
                 {/* Big Temperature Display */}
                 <div
-                  className={`text-6xl font-black font-mono my-2 tracking-tight ${
+                  className={`text-5xl sm:text-6xl font-black font-mono my-2 tracking-tight ${
                     result.predictedTminC <= 1.0
                       ? 'text-red-600'
                       : result.predictedTminC <= 2.0

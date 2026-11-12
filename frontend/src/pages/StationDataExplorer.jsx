@@ -95,7 +95,7 @@ export default function StationDataExplorer() {
           </p>
         </div>
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 flex-wrap">
           <span className="text-xs text-slate-500 font-medium mr-1 flex items-center gap-1">
             <Filter className="w-3.5 h-3.5 text-slate-400" /> Tipo:
           </span>
@@ -122,7 +122,7 @@ export default function StationDataExplorer() {
 
       {/* Explorer Table */}
       <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-xs">
-        <table className="w-full text-left border-collapse">
+        <table className="w-full text-left border-collapse min-w-[720px]">
           <thead>
             <tr className="border-b border-slate-200 bg-slate-50 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
               <th className="py-3 px-3.5">Fecha</th>

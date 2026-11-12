@@ -99,7 +99,7 @@ export default function ModelTransparency() {
       </div>
 
       {/* 2. FLUJO VISUAL: CÓMO FUNCIONA EL MODELO HÍBRIDO (UX PIPELINE) */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-5 text-left">
+      <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-xs space-y-5 text-left">
         <div className="flex items-center gap-3 pb-3 border-b border-slate-200">
           <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center">
             <GitBranch className="w-5 h-5" />
@@ -187,8 +187,8 @@ export default function ModelTransparency() {
       </div>
 
       {/* 3. ARQUITECTURA DE DATOS: VARIABLES CLAVE DE LAS 6:00 PM */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-4 text-left">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+      <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-xs space-y-4 text-left">
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200">
           <div className="flex items-center gap-2">
             <Clock className="w-5 h-5 text-emerald-600" />
             <h3 className="text-base font-bold text-slate-900">
@@ -201,7 +201,7 @@ export default function ModelTransparency() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-xs text-left">
+          <table className="w-full text-xs text-left min-w-[560px]">
             <thead>
               <tr className="border-b border-slate-200 text-slate-500 uppercase tracking-wider text-[11px]">
                 <th className="py-2.5 px-3 font-semibold">Variable</th>
@@ -253,7 +253,7 @@ export default function ModelTransparency() {
       </div>
 
       {/* 4. MATRIZ DE DECISIÓN Y UMBRALES DE ALERTA */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-4 text-left">
+      <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-xs space-y-4 text-left">
         <div className="flex items-center gap-2 pb-3 border-b border-slate-200">
           <Gauge className="w-5 h-5 text-emerald-600" />
           <h3 className="text-base font-bold text-slate-900">
@@ -319,7 +319,7 @@ export default function ModelTransparency() {
       </div>
 
       {/* 5. DOMINIO GEOGRÁFICO DE VALIDEZ */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs text-left space-y-3">
+      <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-xs text-left space-y-3">
         <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
           <MapPin className="w-5 h-5 text-emerald-600" />
           <h3 className="text-base font-bold text-slate-900">

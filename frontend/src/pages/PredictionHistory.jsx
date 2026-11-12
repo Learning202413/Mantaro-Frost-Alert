@@ -212,7 +212,7 @@ export default function PredictionHistory() {
         </div>
 
         {/* Level Filters */}
-        <div className="flex items-center gap-1.5 overflow-x-auto">
+        <div className="flex items-center gap-1.5 flex-wrap">
           <span className="text-xs text-slate-500 font-medium mr-1 flex items-center gap-1">
             <Filter className="w-3.5 h-3.5 text-slate-400" /> Filtro:
           </span>
