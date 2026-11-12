@@ -54,22 +54,25 @@ const CORRIDOR_POLYGON = [
   [-11.73, -75.53]
 ];
 
-// Basemap Tile Providers
+// Basemap Tile Providers (Free and Open - Zero API Key Required)
 const TILE_LAYERS = {
-  dark: {
-    name: 'CartoDB Dark Matter',
-    url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-  },
-  positron: {
-    name: 'CartoDB Positron',
-    url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-  },
   osm: {
     name: 'OpenStreetMap',
+    label: 'Estándar',
     url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  },
+  satellite: {
+    name: 'Esri Satelital',
+    label: 'Satelital',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, USGS, IGN, IGP'
+  },
+  topo: {
+    name: 'Esri Topográfico',
+    label: 'Relieve',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+    attribution: 'Tiles &copy; Esri &mdash; USGS, FAO, NPS, NRCAN, GeoBase'
   }
 };
 
@@ -191,7 +194,7 @@ export default function MantaroMapPage() {
   const [loading, setLoading] = useState(true);
   const [lastSyncTime, setLastSyncTime] = useState(null);
   const [selectedStationId, setSelectedStationId] = useState('chupaca');
-  const [tileLayerKey, setTileLayerKey] = useState('dark');
+  const [tileLayerKey, setTileLayerKey] = useState('osm');
   const [errorMsg, setErrorMsg] = useState(null);
 
   // Fetch real-time weather from Open-Meteo for all 4 stations concurrently
@@ -316,7 +319,7 @@ export default function MantaroMapPage() {
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
-                {layer.name.split(' ')[1] || layer.name}
+                {layer.label || layer.name}
               </button>
             ))}
           </div>
