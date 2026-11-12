@@ -40,7 +40,7 @@ export default function StationDataExplorer() {
           windDirection18: String(row.dd),
           minTempToday: '2.5',
           date: `${row.year}-${String(row.month).padStart(2, '0')}-${String(row.day).padStart(2, '0')}`,
-          notes: `Simulación directa desde registro histórico IGP Huayao (${row.year}-${row.month}-${row.day})`
+          notes: `Simulación directa desde registro histórico IGP Huancayo (${row.year}-${row.month}-${row.day})`
         }
       }
     });
@@ -48,50 +48,50 @@ export default function StationDataExplorer() {
 
   return (
     <PageContainer
-      title="Explorador de Datos EMA - IGP Huayao"
-      subtitle="Conjunto de datos meteorológicos horarios (2018-2025) de la Estación Automática del Observatorio de Huayao."
+      title="Explorador de Datos EMA - IGP Huancayo"
+      subtitle="Datos meteorológicos históricos de la Estación Automática del Observatorio de Huancayo (2018-2025)."
     >
       {/* Station Metadata KPIs */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <KpiCard
-          title="Estación Primaria"
-          value="Huayao"
-          subtitle="UBIGEO 120904 • Huachac"
+          title="Estación Meteorológica"
+          value="Huancayo"
+          subtitle="Observatorio IGP • 3,314 msnm"
           icon={MapPin}
-          color="cyan"
+          color="emerald"
         />
         <KpiCard
-          title="Altitud Observatorio"
+          title="Altitud en el Valle"
           value="3,314"
           unit="msnm"
           subtitle="Valle del Mantaro, Junín"
           icon={Database}
+          color="cyan"
+        />
+        <KpiCard
+          title="Años Registrados"
+          value="2018 - 2025"
+          subtitle="Más de 60,000 registros"
+          icon={BarChart3}
           color="indigo"
         />
         <KpiCard
-          title="Periodo Registro"
-          value="2018 - 2025"
-          subtitle="61,300+ registros horarios"
-          icon={BarChart3}
-          color="emerald"
-        />
-        <KpiCard
-          title="Corte Operativo"
-          value="18:00 h"
-          subtitle="Ventana vespertina clave"
+          title="Hora de Medición"
+          value="6:00 PM"
+          subtitle="Lectura clave del atardecer"
           icon={Snowflake}
           color="slate"
         />
       </div>
 
       {/* Filter and Description */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-slate-900/60 border border-slate-800 p-4 rounded-xl">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-slate-900/80 border border-slate-800 p-4 rounded-xl shadow-sm">
         <div>
-          <h4 className="text-xs font-bold text-slate-200 uppercase tracking-wider">
-            Muestra de Días Representativos en el Archivo IGP_EstacionEMA_data_2018_2025.csv
+          <h4 className="text-xs font-bold text-slate-100 uppercase tracking-wider">
+            Registros Meteorológicos Históricos de Huancayo
           </h4>
-          <p className="text-xs text-slate-500 mt-0.5">
-            Seleccione cualquier registro para transferir instantáneamente sus lecturas de las 18:00 h al motor de pronóstico.
+          <p className="text-xs text-slate-300 mt-0.5">
+            Elige cualquier día para cargar sus lecturas de las 6:00 PM y ver cómo reacciona el pronóstico de heladas.
           </p>
         </div>
 

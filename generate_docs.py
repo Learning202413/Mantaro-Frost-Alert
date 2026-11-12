@@ -180,7 +180,7 @@ def create_full_documentation(output_path="Documentacion_Sistema_Heladas_Mantaro
         bold_prefix="Fuentes Reales: "
     )
     add_p(
-        "1. Dataset Histórico de la Estación Meteorológica Automática (EMA) Huayao del Instituto Geofísico del Perú (IGP): "
+        "1. Dataset Histórico de la Estación Meteorológica Automática (EMA) Huancayo del Instituto Geofísico del Perú (IGP): "
         "Ubicada en el distrito de Huachac, provincia de Chupaca (UBIGEO 120904, a 3,314 msnm). Abarca mediciones horarias reales "
         "desde el año 2018 hasta 2025 (más de 70,000 filas con temperatura, humedad, presión, viento y precipitación)."
     )

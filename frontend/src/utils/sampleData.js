@@ -1,19 +1,19 @@
 /**
- * Sample meteorological data extracted from IGP Huayao Observatory EMA station
- * (Latitude: -12.04, Longitude: -75.32, Elevation: 3314 m.a.s.l.)
- * Calibrated for agricultural evaluators and Mantaro Valley farmers.
+ * Datos meteorológicos de muestra de la estación meteorológica del Observatorio IGP Huancayo
+ * (Latitud: -12.04, Longitud: -75.32, Altitud: 3314 msnm)
+ * Calibrado para agricultores y técnicos del Valle del Mantaro.
  */
 
 export const PRESET_SCENARIOS = [
   {
     id: 'severe-frost',
-    shortTitle: 'Caso Helada Severa (Junio -1.5°C)',
-    name: '🔴 Caso Helada Severa (Junio -1.5°C)',
+    shortTitle: 'Noche de Helada Fuerte (-1.5°C)',
+    name: '🔴 Noche de Helada Fuerte (-1.5°C)',
     targetTemp: '-1.5 °C',
     level: 'ROJO',
-    description: 'Noche despejada y seca de invierno con subsidencia atmosférica y fuerte escape radiativo.',
-    badge: 'ROJO • Crítica',
-    badgeClass: 'bg-red-500/20 text-red-300 border-red-500/40 hover:bg-red-500/30',
+    description: 'Noche de invierno muy seca y con cielo despejado. El calor del suelo escapa rápidamente hacia el espacio.',
+    badge: 'ROJO • Alerta Máxima',
+    badgeClass: 'bg-red-500/15 text-red-200 border-red-500/40 hover:bg-red-500/25',
     data: {
       airTemp18: 9.27,
       relativeHumidity18: 49.0,
@@ -23,18 +23,18 @@ export const PRESET_SCENARIOS = [
       minTempToday: 1.2,
       rrAfternoon: 0.0,
       date: '2026-06-25',
-      notes: 'Caso Histórico Extremo: Noche despejada de invierno en el valle del Mantaro (Obs. Huayao).'
+      notes: 'Registro histórico real: noche despejada de invierno en el valle del Mantaro (IGP Huancayo).'
     }
   },
   {
     id: 'typical-cold',
-    shortTitle: 'Caso Noche Fría / Alerta Amarilla (+1.2°C)',
-    name: '🟡 Caso Noche Fría / Alerta Amarilla (+1.2°C)',
+    shortTitle: 'Noche Fría con Escarcha (+1.2°C)',
+    name: '🟡 Noche Fría con Escarcha (+1.2°C)',
     targetTemp: '+1.2 °C',
     level: 'AMARILLO',
-    description: 'Temperatura vespertina fresca y humedad moderada; alto riesgo de escarcha superficial en parcelas bajas.',
-    badge: 'AMARILLO • Temprana',
-    badgeClass: 'bg-amber-500/20 text-amber-300 border-amber-500/40 hover:bg-amber-500/30',
+    description: 'Atardecer fresco con humedad moderada. Peligro de escarcha en las partes bajas y hondonadas del valle.',
+    badge: 'AMARILLO • Prevención',
+    badgeClass: 'bg-amber-500/15 text-amber-200 border-amber-500/40 hover:bg-amber-500/25',
     data: {
       airTemp18: 10.8,
       relativeHumidity18: 58.5,
@@ -44,18 +44,18 @@ export const PRESET_SCENARIOS = [
       minTempToday: 3.5,
       rrAfternoon: 0.0,
       date: '2026-05-18',
-      notes: 'Caso de Transición: Escarcha agronómica en hoyadas de Chupaca y Sicaya.'
+      notes: 'Caso de advertencia: escarcha matutina en parcelas bajas de Chupaca y Sicaya.'
     }
   },
   {
     id: 'warm-no-frost',
-    shortTitle: 'Caso Templado / Sin Riesgo (+4.5°C)',
-    name: '🟢 Caso Templado / Sin Riesgo (+4.5°C)',
+    shortTitle: 'Noche Templada y Segura (+4.5°C)',
+    name: '🟢 Noche Templada y Segura (+4.5°C)',
     targetTemp: '+4.5 °C',
     level: 'VERDE',
-    description: 'Temporada de lluvias andinas con nubosidad protectora nocturna y balance radiativo favorable.',
+    description: 'Cielo con nubes protectoras y humedad alta tras lluvia ligera. Los cultivos están seguros.',
     badge: 'VERDE • Seguro',
-    badgeClass: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40 hover:bg-emerald-500/30',
+    badgeClass: 'bg-emerald-500/15 text-emerald-200 border-emerald-500/40 hover:bg-emerald-500/25',
     data: {
       airTemp18: 13.89,
       relativeHumidity18: 70.1,
@@ -65,7 +65,7 @@ export const PRESET_SCENARIOS = [
       minTempToday: 7.4,
       rrAfternoon: 2.5,
       date: '2026-02-17',
-      notes: 'Caso Húmedo de Verano: Cielo cubierto sin peligro térmico para cultivos.'
+      notes: 'Noche húmeda: las nubes retienen el calor y no hay riesgo de congelación.'
     }
   }
 ];

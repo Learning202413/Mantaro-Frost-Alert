@@ -6,16 +6,16 @@
 export const MANTARO_CORRIDOR_ZONES = [
   {
     id: 'chupaca',
-    name: 'Chupaca (Huayao / Huachac)',
-    station: 'Estación Referencial IGP Huayao',
+    name: 'Huancayo - Observatorio IGP (Chupaca)',
+    station: 'Estación Meteorológica IGP Huancayo',
     ubigeo: '120904',
-    province: 'Chupaca',
+    province: 'Huancayo / Chupaca',
     department: 'Junín',
     latitude: -12.0433,
     longitude: -75.3211,
     elevation: 3314,
     isReference: true,
-    description: 'Estación base de calibración histórica del modelo (IGP 1922-2025). Observatorio geofísico de referencia.'
+    description: 'Estación base de calibración histórica del modelo (IGP 1922-2025). Observatorio de referencia de Huancayo.'
   },
   {
     id: 'huancayo',
@@ -63,7 +63,7 @@ export const EXCLUDED_ZONES = [
     id: 'high_puna',
     name: 'Puna Alta (> 3,700 msnm)',
     altitudeRange: '> 3,700 msnm',
-    reason: 'Inversión térmica severa y régimen barométrico fuera de la campana estadística de calibración del IGP Huayao (3,150 - 3,450 msnm). En altitudes de puna, los gradientes adiabáticos secos y la turbulencia orográfica difieren drásticamente del fondo del valle.'
+    reason: 'Inversión térmica severa y régimen de presión fuera de la calibración del IGP Huancayo (3,150 - 3,450 msnm). En la puna alta el frío es mucho más extremo y el comportamiento del viento es muy diferente al del valle.'
   },
   {
     id: 'tarma',

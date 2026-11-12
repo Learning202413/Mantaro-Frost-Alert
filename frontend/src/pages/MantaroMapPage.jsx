@@ -293,7 +293,7 @@ export default function MantaroMapPage() {
   return (
     <PageContainer
       title="Mapa Interactivo del Valle del Mantaro"
-      subtitle="Telemetría satelital y agrometeorológica en tiempo real • Corredor agrícola central (3,150 – 3,450 msnm)"
+      subtitle="Monitoreo del clima en vivo para agricultores • Corredor agrícola central (3,150 – 3,450 msnm)"
       actions={
         <div className="flex items-center gap-2">
           <Button
@@ -304,7 +304,7 @@ export default function MantaroMapPage() {
             onClick={fetchCorridorWeather}
             loading={loading}
           >
-            Sincronizar Open-Meteo
+            Actualizar Satélite
           </Button>
           <div className="hidden sm:flex items-center gap-1 bg-slate-900 border border-slate-800 rounded-lg p-1 text-xs">
             <span className="px-2 text-slate-400 font-mono text-[11px]">Capa:</span>
@@ -315,7 +315,7 @@ export default function MantaroMapPage() {
                 onClick={() => setTileLayerKey(key)}
                 className={`px-2 py-1 rounded text-[11px] font-medium transition-all ${
                   tileLayerKey === key
-                    ? 'bg-cyan-600/30 text-cyan-300 border border-cyan-500/40'
+                    ? 'bg-emerald-600/30 text-emerald-300 border border-emerald-500/40'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -331,23 +331,23 @@ export default function MantaroMapPage() {
          ========================================================================= */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <KpiCard
-          title="Estaciones Monitoreadas"
+          title="Estaciones del Valle"
           value="4"
           subtitle="Chupaca • Huancayo • Concepción • Jauja"
           icon={Radio}
-          color="cyan"
+          color="emerald"
         />
 
         <KpiCard
-          title="Nivel de Alerta Predominante"
+          title="Riesgo de Helada en el Valle"
           value={kpiData.valleyAlert}
-          subtitle="Balance radiativo del fondo de valle"
+          subtitle="Monitoreo del fondo del valle"
           icon={ShieldAlert}
           color={kpiData.valleyColor}
         />
 
         <KpiCard
-          title="T. Mínima Proyectada Valle"
+          title="Temperatura Más Fría Esperada"
           value={kpiData.minProjected}
           unit="°C"
           subtitle={lastSyncTime ? `Actualizado: ${lastSyncTime}` : 'Consultando modelos...'}
@@ -356,10 +356,10 @@ export default function MantaroMapPage() {
         />
 
         <KpiCard
-          title="Rango Altitudinal Operativo"
+          title="Altitud de los Campos"
           value="3,150 – 3,450"
           unit="msnm"
-          subtitle="Fondo del Valle del Mantaro (Junín)"
+          subtitle="Zona agrícola de Huancayo y el valle"
           icon={Mountain}
           color="slate"
         />
@@ -728,12 +728,12 @@ export default function MantaroMapPage() {
                 size="lg"
                 icon={Sparkles}
                 onClick={handleLoadInPredictor}
-                className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold shadow-lg shadow-cyan-950/50 py-3"
+                className="w-full bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold shadow-lg shadow-emerald-950/60 py-3 rounded-xl cursor-pointer"
               >
-                ⚡ Cargar en Predictor Vespertino
+                ⚡ Usar estos datos para pronosticar mañana
               </Button>
-              <p className="text-[10px] text-slate-500 text-center mt-2">
-                Transfiere automáticamente las variables meteorológicas de {selectedStation.name.split(' (')[0]} al modelo híbrido Ridge + Random Forest.
+              <p className="text-[11px] text-slate-400 text-center mt-2">
+                Transfiere automáticamente las lecturas de {selectedStation.name.split(' (')[0]} al motor inteligente de pronóstico.
               </p>
             </div>
           </div>

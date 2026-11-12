@@ -57,8 +57,8 @@ export default function ModelTransparency() {
 
   return (
     <PageContainer
-      title="Transparencia del Modelo ML &amp; Marco HCI"
-      subtitle="Explicabilidad del modelo híbrido físico-estadístico y fundamentos de Interacción Persona-Ordenador (HCI) aplicados al diseño del sistema."
+      title="Cómo Funciona el Sistema & Usabilidad"
+      subtitle="Explicación clara de cómo el sistema predice las heladas y cómo está diseñado para que cualquier agricultor o técnico lo use con facilidad."
       actions={
         <Button
           variant="outline"
@@ -74,29 +74,29 @@ export default function ModelTransparency() {
       {/* High-level KPIs */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <KpiCard
-          title="Versión del Servicio"
+          title="Versión del Sistema"
           value={modelInfo?.serviceVersion || '2.0.0'}
-          subtitle="Semana 03 - Hackaton v02"
+          subtitle="Hackaton v02 • Huancayo"
           icon={Cpu}
+          color="emerald"
+        />
+        <KpiCard
+          title="Registro Histórico"
+          value="1922 - 2025"
+          subtitle="Datos IGP Huancayo (103 años)"
+          icon={Database}
           color="cyan"
         />
         <KpiCard
-          title="Periodo de Entrenamiento"
-          value={modelInfo?.trainYears || '2021-2025'}
-          subtitle="Datos IGP Huayao (103 años)"
-          icon={Database}
-          color="indigo"
-        />
-        <KpiCard
-          title="Framework ML"
-          value={`Scikit-learn ${modelInfo?.sklearnVersion || '1.6.1'}`}
-          subtitle="Joblib Serializado"
+          title="Motor de Predicción"
+          value="Híbrido IA"
+          subtitle="Física + Inteligencia Artificial"
           icon={FileCode}
           color="slate"
         />
         <KpiCard
-          title="Estado VPS Cloud"
-          value={healthInfo?.vpsMlService?.connected ? 'Online' : 'Conectado'}
+          title="Estado en la Nube"
+          value={healthInfo?.vpsMlService?.connected ? 'Activo' : 'Conectado'}
           subtitle="heladas-api.astrazynk.pp.ua"
           icon={Radio}
           color={healthInfo?.vpsMlService?.connected ? 'emerald' : 'amber'}

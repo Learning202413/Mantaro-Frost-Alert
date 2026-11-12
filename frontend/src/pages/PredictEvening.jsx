@@ -97,7 +97,7 @@ export default function PredictEvening() {
       }));
       setMessage({
         type: 'info',
-        text: 'Datos cargados automáticamente desde el Explorador EMA Huayao.'
+        text: 'Datos cargados automáticamente desde el Explorador de Huancayo.'
       });
     }
   }, [location.state]);
@@ -293,13 +293,13 @@ export default function PredictEvening() {
 📅 Diana: ${result.targetDate || 'Madrugada D+1'} (05:30 h)
 🌡️ T. Mínima Pronosticada: ${result.predictedTminC?.toFixed(2)} °C
 🚨 Nivel de Alerta: ${result.alertLevel}
-🔬 Descomposición:
-  • Piso Físico (Ridge): ${result.baseRidgeC?.toFixed(2)} °C
-  • Residual Microclimático (Random Forest): ${result.residualRfC?.toFixed(2)} °C
-🛡️ Acciones de Mitigación Térmica en el Valle:
-  - Riego térmico preventivo: Activar aspersión continua a las 02:00 AM (80 cal/g calor latente de fusión).
-  - Cobertura térmica nocturna: Desplegar mantas agryl (17 g/m²) y monitoreo de inversión térmica en hondonadas.
-ℹ️ Sistema Mantaro Frost Alert • Observatorio Huayao IGP (3,314 msnm)`;
+🔬 Detalle del Cálculo:
+  • Estimación Base (Temperatura): ${result.baseRidgeC?.toFixed(2)} °C
+  • Ajuste por Viento y Humedad: ${result.residualRfC?.toFixed(2)} °C
+🛡️ Recomendaciones para Proteger tus Cultivos:
+  - Riego preventivo por aspersión: Iniciar a las 02:00 AM (el agua al congelarse desprende calor y protege las hojas).
+  - Cobertura térmica: Colocar mantas agryl o cubiertas antes del anochecer en zonas bajas.
+ℹ️ Sistema Mantaro Frost Alert • Observatorio Huancayo IGP (3,314 msnm)`;
 
     navigator.clipboard.writeText(summaryText);
     setCopied(true);
@@ -308,22 +308,22 @@ export default function PredictEvening() {
 
   return (
     <PageContainer
-      title="Predicción Vespertina de Heladas"
-      subtitle="Corte sincrónico de las 18:00 h • Calibrado para el fondo del Valle del Mantaro (3,150 – 3,450 msnm)"
+      title="Pronóstico de Heladas (Atardecer 6:00 PM)"
+      subtitle="Lectura clave de las 6:00 PM • Calibrado para los campos agrícolas del Valle del Mantaro (3,150 – 3,450 msnm)"
     >
       {/* =========================================================================
-          SHNEIDERMAN RULE 2: SHORTCUTS FOR EVALUATORS & FREQUENT USERS (1-CLICK)
+          EJEMPLOS Y ATAJOS DE PRUEBA RÁPIDA (1 CLIC)
          ========================================================================= */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-950 border border-cyan-500/40 rounded-xl p-4 shadow-xl space-y-3">
+      <div className="bg-gradient-to-r from-slate-900/90 via-slate-900 to-slate-950 border border-emerald-500/30 rounded-xl p-4 shadow-xl space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-2.5">
           <div className="flex items-center gap-2">
-            <Award className="w-4 h-4 text-cyan-400" />
+            <Award className="w-4 h-4 text-emerald-400" />
             <span className="text-xs font-bold text-white uppercase tracking-wider">
-              Atajos de Evaluación Rápida (1-Clic) • Heurística Shneiderman &amp; Nielsen
+              Ejemplos Rápidos (1 Clic)
             </span>
           </div>
-          <span className="text-[11px] text-cyan-300 font-mono">
-            Evaluación completa en &lt; 3 minutos
+          <span className="text-[11px] text-emerald-300 font-medium">
+            Prueba casos reales al instante
           </span>
         </div>
 
@@ -343,7 +343,7 @@ export default function PredictEvening() {
                   {preset.targetTemp}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-300/90 mt-1 line-clamp-2 leading-relaxed">
+              <p className="text-[11px] text-slate-300 mt-1 line-clamp-2 leading-relaxed">
                 {preset.description}
               </p>
             </button>
@@ -354,19 +354,19 @@ export default function PredictEvening() {
             type="button"
             onClick={handleSyncLiveWeather}
             disabled={syncingWeather}
-            className="p-3 text-left rounded-lg border border-cyan-500/50 bg-gradient-to-r from-cyan-950/70 to-blue-950/70 hover:from-cyan-900/80 hover:to-blue-900/80 text-cyan-200 transition-all cursor-pointer group flex flex-col justify-between shadow-md"
+            className="p-3 text-left rounded-lg border border-teal-500/40 bg-gradient-to-r from-teal-950/60 to-emerald-950/60 hover:from-teal-900/70 hover:to-emerald-900/70 text-teal-200 transition-all cursor-pointer group flex flex-col justify-between shadow-md"
           >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-white group-hover:text-cyan-200 flex items-center gap-1.5">
-                <Radio className={`w-3.5 h-3.5 text-cyan-400 ${syncingWeather ? 'animate-spin' : 'animate-pulse'}`} />
-                📡 Clima en Vivo (Huayao)
+              <span className="text-xs font-bold text-white group-hover:text-teal-200 flex items-center gap-1.5">
+                <Radio className={`w-3.5 h-3.5 text-teal-400 ${syncingWeather ? 'animate-spin' : 'animate-pulse'}`} />
+                📡 Clima en Vivo (Huancayo)
               </span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded font-mono font-bold bg-cyan-900/80 text-cyan-300 border border-cyan-500/50">
-                Open-Meteo
+              <span className="text-[10px] px-1.5 py-0.5 rounded font-mono font-bold bg-teal-900/80 text-teal-300 border border-teal-500/40">
+                Satélite
               </span>
             </div>
-            <p className="text-[11px] text-cyan-200/80 mt-1 line-clamp-2 leading-relaxed">
-              Descarga telemetría satelital a las 18:00 h en tiempo real para el valle.
+            <p className="text-[11px] text-teal-200/90 mt-1 line-clamp-2 leading-relaxed">
+              Descarga el clima actual en el valle directo del satélite meteorológico.
             </p>
           </button>
         </div>
@@ -378,13 +378,13 @@ export default function PredictEvening() {
       <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 shadow-lg space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-2">
           <div className="flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-cyan-400" />
+            <MapPin className="w-4 h-4 text-emerald-400" />
             <h2 className="text-xs font-bold text-white uppercase tracking-wider">
-              Ámbito Físico-Estadístico Calibrado: Fondo del Valle del Mantaro
+              Zona de Cobertura: Valle del Mantaro
             </h2>
           </div>
-          <span className="text-[11px] text-cyan-400 font-mono">
-            Rango Operativo Válido: 3,150 – 3,450 msnm
+          <span className="text-[11px] text-emerald-400 font-mono">
+            Altitud válida: 3,150 – 3,450 msnm
           </span>
         </div>
 
@@ -402,21 +402,21 @@ export default function PredictEvening() {
                 }}
                 className={`p-2.5 text-left rounded-lg border transition-all cursor-pointer relative ${
                   isSelected
-                    ? 'border-cyan-400 bg-cyan-950/50 shadow-md shadow-cyan-950/60 ring-1 ring-cyan-400/50'
+                    ? 'border-emerald-400 bg-emerald-950/50 shadow-md shadow-emerald-950/60 ring-1 ring-emerald-400/50'
                     : 'border-slate-800 bg-slate-950/60 hover:border-slate-700 hover:bg-slate-900/60'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className={`text-xs font-bold ${isSelected ? 'text-cyan-300' : 'text-slate-200'}`}>
+                  <span className={`text-xs font-bold ${isSelected ? 'text-emerald-300' : 'text-slate-200'}`}>
                     {zone.name}
                   </span>
                   {zone.isReference && (
-                    <span className="text-[9px] bg-cyan-900/80 border border-cyan-500/50 text-cyan-300 px-1 py-0.5 rounded font-mono font-semibold">
+                    <span className="text-[9px] bg-emerald-900/80 border border-emerald-500/50 text-emerald-200 px-1 py-0.5 rounded font-mono font-semibold">
                       IGP REF
                     </span>
                   )}
                 </div>
-                <div className="text-[11px] font-mono text-cyan-400 mt-1">
+                <div className="text-[11px] font-mono text-emerald-400 mt-1">
                   {zone.elevation} msnm
                 </div>
               </button>
@@ -434,12 +434,12 @@ export default function PredictEvening() {
             <div className="flex items-center gap-2">
               <AlertTriangle className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span className="text-xs font-medium text-slate-300">
-                Restricciones de Altitud: Por qué NO aplica a Puna (&gt;3,700 msnm) o Selva
+                ¿Por qué este pronóstico solo aplica al valle y no a la puna o selva?
               </span>
             </div>
             <div className="flex items-center gap-1.5 text-slate-400">
               <span className="text-[11px]">
-                {showExcludedZones ? 'Ocultar' : 'Ver límites'}
+                {showExcludedZones ? 'Ocultar' : 'Ver explicación'}
               </span>
               {showExcludedZones ? (
                 <ChevronUp className="w-3.5 h-3.5" />
@@ -451,8 +451,8 @@ export default function PredictEvening() {
 
           {showExcludedZones && (
             <div className="p-3 border-t border-slate-800/80 space-y-2 bg-slate-950/80">
-              <p className="text-xs text-slate-400">
-                El modelo Ridge + Random Forest fue entrenado con la estación EMA Huayao (3,314 msnm). En altitudes mayores a 3,700 msnm o en la vertiente oriental amazónica, los balances de radiación difieren drásticamente:
+              <p className="text-xs text-slate-300">
+                El modelo fue entrenado con datos de la estación del Observatorio IGP Huancayo (3,314 msnm). En altitudes mayores a 3,700 msnm (puna) o en la selva, el clima, la presión y los vientos son muy diferentes a los del fondo del valle:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 pt-1">
                 {EXCLUDED_ZONES.map((exZone) => (
@@ -540,8 +540,8 @@ export default function PredictEvening() {
         {/* Left Column: Form structured in chronological stages */}
         <div className="lg:col-span-7 space-y-4">
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* ETAPA 1: MADRUGADA PREVIA (00:00 - 07:00 h) */}
-            <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-4 shadow-md text-left">
+            {/* ETAPA 1: AMANECER DE HOY (00:00 - 07:00 h) */}
+            <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 shadow-md text-left">
               <div className="flex items-center justify-between border-b border-slate-800/80 pb-2 mb-3">
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 rounded-md bg-indigo-600/20 text-indigo-400 flex items-center justify-center font-bold text-xs">
@@ -549,11 +549,11 @@ export default function PredictEvening() {
                   </div>
                   <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Sunrise className="w-3.5 h-3.5 text-indigo-400" />
-                    Etapa 1: Madrugada Previa (00:00 - 07:00 h)
+                    Etapa 1: Amanecer de Hoy (Madrugada Anterior)
                   </h3>
                 </div>
-                <span className="text-[11px] text-indigo-300/80 font-mono">
-                  Inercia Térmica del Suelo
+                <span className="text-[11px] text-indigo-300/90 font-medium">
+                  Calor acumulado en el suelo
                 </span>
               </div>
 
@@ -561,7 +561,7 @@ export default function PredictEvening() {
                 <InputField
                   id="minTempToday"
                   name="minTempToday"
-                  label="Temperatura Mínima de Hoy (Tmin 06h)"
+                  label="Temperatura Más Fría de Hoy (Amanecer)"
                   unit="°C"
                   type="number"
                   step="0.1"
@@ -569,25 +569,25 @@ export default function PredictEvening() {
                   max="35"
                   value={formData.minTempToday}
                   onChange={handleInputChange}
-                  helperText="Termómetro de mínima en casilla meteorológica."
+                  helperText="Termómetro de mínima al amanecer."
                   farmerExplanation="Mide qué tan frío amaneció el suelo hoy. Si ya estuvo cerca de 0°C, la tierra absorbió menos calor y la siguiente helada será más severa."
                 />
 
                 <InputField
                   id="date"
                   name="date"
-                  label="Fecha de la Observación"
+                  label="Fecha de Hoy"
                   type="date"
                   value={formData.date}
                   onChange={handleInputChange}
-                  helperText="Determina la estacionalidad astronómica (doy)."
-                  farmerExplanation="En el Mantaro el riesgo máximo ocurre entre mayo y agosto (temporada seca con cielo despejado y noches largas)."
+                  helperText="Época del año (mes y día)."
+                  farmerExplanation="En el valle del Mantaro el mayor riesgo ocurre entre mayo y agosto (temporada seca con cielo despejado y noches heladas)."
                 />
               </div>
             </div>
 
-            {/* ETAPA 2: TARDE ANDINA (12:00 - 18:00 h) */}
-            <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-4 shadow-md text-left">
+            {/* ETAPA 2: TARDE DE HOY (12:00 - 18:00 h) */}
+            <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 shadow-md text-left">
               <div className="flex items-center justify-between border-b border-slate-800/80 pb-2 mb-3">
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 rounded-md bg-amber-600/20 text-amber-400 flex items-center justify-center font-bold text-xs">
@@ -595,11 +595,11 @@ export default function PredictEvening() {
                   </div>
                   <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Sun className="w-3.5 h-3.5 text-amber-400" />
-                    Etapa 2: Tarde Andina (12:00 - 18:00 h)
+                    Etapa 2: Tarde de Hoy (12:00 PM a 6:00 PM)
                   </h3>
                 </div>
-                <span className="text-[11px] text-amber-300/80 font-mono">
-                  Humectación y Lluvia Previa
+                <span className="text-[11px] text-amber-300/90 font-medium">
+                  Lluvia y humedad de la tarde
                 </span>
               </div>
 
@@ -607,7 +607,7 @@ export default function PredictEvening() {
                 <InputField
                   id="rrAfternoon"
                   name="rrAfternoon"
-                  label="Precipitación de la Tarde (RR Tarde)"
+                  label="Lluvia de la Tarde (12:00 a 6:00 PM)"
                   unit="mm"
                   type="number"
                   step="0.1"
@@ -615,38 +615,38 @@ export default function PredictEvening() {
                   max="150"
                   value={formData.rrAfternoon}
                   onChange={handleInputChange}
-                  helperText="Lluvia acumulada entre 12:00 y 18:00 h."
+                  helperText="Lluvia caída durante la tarde."
                   farmerExplanation="Si llovió en la tarde, el suelo húmedo retiene calor por evaporación y reduce drásticamente el riesgo de helada por radiación."
                 />
 
                 <InputField
                   id="notes"
                   name="notes"
-                  label="Identificador de Estación / Punto de Monitoreo"
+                  label="Lugar o Parcela Monitoreada"
                   type="text"
-                  placeholder="Ej. Estación Chupaca - Huayao (3,314 msnm)"
+                  placeholder="Ej. Estación Huancayo - Chupaca (3,314 msnm)"
                   value={formData.notes}
                   onChange={handleInputChange}
-                  helperText="Identificador del punto de observación para el registro histórico."
-                  farmerExplanation="Indique la ubicación o cota altitudinal para adecuar el protocolo de mitigación térmica."
+                  helperText="Identificador del punto de observación."
+                  farmerExplanation="Indique la ubicación o altitud para adaptar las recomendaciones de protección térmica."
                 />
               </div>
             </div>
 
             {/* ETAPA 3: CORTE VESPERTINO CLAVE (18:00 h) */}
-            <div className="bg-slate-900/90 border-2 border-cyan-500/40 rounded-xl p-4 shadow-lg text-left space-y-3">
-              <div className="flex items-center justify-between border-b border-cyan-500/30 pb-2">
+            <div className="bg-slate-900/90 border-2 border-emerald-500/40 rounded-xl p-4 shadow-lg text-left space-y-3">
+              <div className="flex items-center justify-between border-b border-emerald-500/30 pb-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-md bg-cyan-600/30 text-cyan-300 flex items-center justify-center font-bold text-xs">
+                  <div className="w-6 h-6 rounded-md bg-emerald-600/30 text-emerald-300 flex items-center justify-center font-bold text-xs">
                     3
                   </div>
-                  <h3 className="text-xs font-bold text-cyan-200 uppercase tracking-wider flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-cyan-400" />
-                    Etapa 3: Corte Vespertino Clave (18:00 h Sincrónico)
+                  <h3 className="text-xs font-bold text-emerald-200 uppercase tracking-wider flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-emerald-400" />
+                    Etapa 3: Mediciones de las 6:00 PM (Al Atardecer)
                   </h3>
                 </div>
-                <span className="text-[11px] font-bold text-cyan-300 font-mono bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-500/40">
-                  Datos Principales ML
+                <span className="text-[11px] font-bold text-emerald-300 font-mono bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/40">
+                  Lectura Principal
                 </span>
               </div>
 
@@ -654,7 +654,7 @@ export default function PredictEvening() {
                 <InputField
                   id="airTemp18"
                   name="airTemp18"
-                  label="Temperatura Aire (TT 18:00)"
+                  label="Temperatura del Aire a las 6:00 PM"
                   unit="°C"
                   type="number"
                   step="0.01"
@@ -663,14 +663,14 @@ export default function PredictEvening() {
                   required
                   value={formData.airTemp18}
                   onChange={handleInputChange}
-                  helperText="Punto de partida del enfriamiento nocturno."
+                  helperText="Temperatura al caer la tarde."
                   farmerExplanation="Si a las 6 de la tarde la temperatura ya está por debajo de 10°C, el enfriamiento nocturno alcanzará el punto de congelación antes del amanecer."
                 />
 
                 <InputField
                   id="relativeHumidity18"
                   name="relativeHumidity18"
-                  label="Humedad Relativa (HR 18:00)"
+                  label="Humedad del Aire a las 6:00 PM"
                   unit="%"
                   type="number"
                   step="0.1"
@@ -679,14 +679,14 @@ export default function PredictEvening() {
                   required
                   value={formData.relativeHumidity18}
                   onChange={handleInputChange}
-                  helperText="Humedad ambiental al caer la tarde."
+                  helperText="Humedad en el ambiente."
                   farmerExplanation="El vapor de agua actúa como un invernadero natural. Si la humedad es menor a 50%, no hay vapor que retenga el calor y el suelo se enfría a gran velocidad."
                 />
 
                 <InputField
                   id="pressure18"
                   name="pressure18"
-                  label="Presión Barométrica (PP 18:00)"
+                  label="Presión del Aire a las 6:00 PM"
                   unit="hPa"
                   type="number"
                   step="0.1"
@@ -694,14 +694,14 @@ export default function PredictEvening() {
                   max="1100"
                   value={formData.pressure18}
                   onChange={handleInputChange}
-                  helperText="En Huayao (3,314 msnm) ronda ~688 hPa."
+                  helperText="En Huancayo (3,314 msnm) ronda ~688 hPa."
                   farmerExplanation="La presión alta andina suele asociarse a cielos completamente despejados y aire seco que facilitan la helada."
                 />
 
                 <InputField
                   id="windSpeed18"
                   name="windSpeed18"
-                  label="Velocidad del Viento (FF 18:00)"
+                  label="Velocidad del Viento a las 6:00 PM"
                   unit="m/s"
                   type="number"
                   step="0.01"
@@ -709,14 +709,14 @@ export default function PredictEvening() {
                   max="50"
                   value={formData.windSpeed18}
                   onChange={handleInputChange}
-                  helperText="Viento calmo (<1.5 m/s) intensifica heladas."
+                  helperText="Viento en calma (<1.5 m/s) favorece la helada."
                   farmerExplanation="Si no hay viento, el aire helado más pesado se asienta en el fondo de las chacras (inversión térmica) y congela las plantas."
                 />
 
                 <InputField
                   id="windDirection18"
                   name="windDirection18"
-                  label="Dirección del Viento (DD 18:00)"
+                  label="Dirección del Viento a las 6:00 PM"
                   unit="° azimut"
                   type="number"
                   step="0.1"
@@ -725,7 +725,7 @@ export default function PredictEvening() {
                   value={formData.windDirection18}
                   onChange={handleInputChange}
                   helperText="270° = Oeste, 315° = Noroeste."
-                  farmerExplanation="En el valle, los vientos del oeste y noroeste bajan de las cordilleras secas e intensifican el enfriamiento radiativo nocturno."
+                  farmerExplanation="En el valle, los vientos del oeste y noroeste bajan de las cordilleras secas e intensifican el enfriamiento nocturno."
                 />
               </div>
 
@@ -768,37 +768,37 @@ export default function PredictEvening() {
                 size="lg"
                 loading={loading}
                 icon={Sparkles}
-                className="w-full sm:w-auto bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 shadow-lg shadow-cyan-950 font-bold"
+                className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 shadow-lg shadow-emerald-950 font-bold text-white px-6 py-2.5 rounded-xl cursor-pointer"
               >
-                {loading ? 'Calculando Modelo Dual...' : 'Ejecutar Pronóstico de Helada'}
+                {loading ? 'Calculando Pronóstico...' : 'Ejecutar Pronóstico de Helada'}
               </Button>
             </div>
           </form>
         </div>
 
-        {/* Right Column: Stage 4 - Ficha de Resolución Agrícola */}
+        {/* Right Column: Stage 4 - Ficha de Recomendaciones Agrícolas */}
         <div className="lg:col-span-5 space-y-4">
           {result ? (
-            <div className="bg-slate-900/90 border-2 border-slate-700 rounded-2xl p-6 shadow-2xl space-y-5 text-left">
+            <div className="bg-slate-900/90 border-2 border-emerald-500/30 rounded-2xl p-6 shadow-2xl space-y-5 text-left">
               {/* Header result */}
               <div className="flex items-center justify-between pb-3 border-b border-slate-800">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-md bg-emerald-600/20 text-emerald-400 flex items-center justify-center font-bold text-xs">
+                  <div className="w-6 h-6 rounded-md bg-emerald-600/20 text-emerald-300 flex items-center justify-center font-bold text-xs">
                     4
                   </div>
                   <span className="text-xs font-bold uppercase tracking-wider text-white">
-                    Ficha de Resolución Meteorológica &amp; Mitigación Térmica
+                    Recomendaciones para Proteger tus Cultivos
                   </span>
                 </div>
-                <span className="text-[11px] font-mono text-cyan-300 bg-slate-950 px-2 py-0.5 rounded border border-slate-800">
-                  Diana: {result.targetDate} (05:30 h)
+                <span className="text-[11px] font-medium text-emerald-300 bg-slate-950 px-2.5 py-0.5 rounded-full border border-slate-800">
+                  Madrugada de Mañana (5:30 AM)
                 </span>
               </div>
 
               {/* Giant Thermal Gauge */}
-              <div className="text-center py-5 px-4 bg-slate-950/80 rounded-xl border border-slate-800 relative overflow-hidden">
+              <div className="text-center py-5 px-4 bg-slate-950/90 rounded-xl border border-slate-800 relative overflow-hidden">
                 <div className="text-xs text-slate-300 font-semibold tracking-wider uppercase">
-                  Temperatura Mínima Pronosticada (T_min)
+                  Temperatura Mínima Esperada al Amanecer
                 </div>
 
                 {/* Big Temperature Display */}
@@ -818,45 +818,45 @@ export default function PredictEvening() {
                   <StatusBadge level={result.alertLevel} size="lg" />
                 </div>
 
-                {/* Plain-Spanish Diagnosis for Valley Operators */}
-                <p className="text-xs text-slate-300 mt-3 max-w-sm mx-auto leading-relaxed">
+                {/* Plain-Spanish Diagnosis for Valley Farmers */}
+                <p className="text-xs text-slate-200 mt-3 max-w-sm mx-auto leading-relaxed">
                   {result.predictedTminC <= 0
-                    ? '⚠️ HELADA METEOROLÓGICA SEVERA: Formación de hielo superficial y congelación del estrato rasante.'
+                    ? '⚠️ HELADA FUERTE: Congelará el agua y quemará las hojas en los campos. Se deben tomar medidas inmediatas.'
                     : result.predictedTminC <= 2.0
-                    ? '❄️ RIESGO DE ESCARCHA TÉRMICA: Aire frío en el suelo afectará hondonadas y cotas bajas del corredor.'
-                    : '✅ CONDICIÓN TÉRMICA SEGURA: Sin peligro de descenso térmico crítico al amanecer.'}
+                    ? '❄️ RIESGO DE ESCARCHA: Habrá frío intenso en las partes bajas del valle con peligro de escarcha matutina.'
+                    : '✅ SIN PELIGRO DE HELADA: La noche será templada y los cultivos están a salvo.'}
                 </p>
               </div>
 
-              {/* Dual Architecture Decomposition (Ridge + Random Forest) */}
+              {/* Simple Model Explanation */}
               <div className="space-y-2">
-                <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
-                  <span>Descomposición Físico-Estadística</span>
-                  <span className="text-cyan-400 font-mono">Clean Architecture</span>
+                <div className="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center justify-between">
+                  <span>¿Cómo se calculó la temperatura?</span>
+                  <span className="text-emerald-400 font-medium">Modelo Inteligente</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2.5">
-                  <div className="p-3 rounded-lg border border-slate-800 bg-slate-950/60">
+                  <div className="p-3 rounded-lg border border-slate-800 bg-slate-950/70">
                     <div className="text-[10px] uppercase font-bold text-slate-400">
-                      Piso Físico (Ridge)
+                      Pronóstico Base
                     </div>
                     <div className="text-xl font-bold font-mono text-slate-100 mt-1">
                       {result.baseRidgeC.toFixed(2)} °C
                     </div>
                     <div className="text-[10px] text-slate-400 mt-0.5">
-                      Ley Stefan-Boltzmann
+                      Enfriamiento natural del cielo
                     </div>
                   </div>
 
-                  <div className="p-3 rounded-lg border border-slate-800 bg-slate-950/60">
+                  <div className="p-3 rounded-lg border border-slate-800 bg-slate-950/70">
                     <div className="text-[10px] uppercase font-bold text-slate-400">
-                      Residual (Random Forest)
+                      Ajuste por Viento y Humedad
                     </div>
-                    <div className="text-xl font-bold font-mono text-cyan-300 mt-1">
+                    <div className="text-xl font-bold font-mono text-teal-300 mt-1">
                       {result.residualRfC >= 0 ? `+${result.residualRfC.toFixed(2)}` : result.residualRfC.toFixed(2)} °C
                     </div>
                     <div className="text-[10px] text-slate-400 mt-0.5">
-                      Inversión térmica local
+                      Condición local del valle
                     </div>
                   </div>
                 </div>
@@ -866,58 +866,58 @@ export default function PredictEvening() {
               <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 space-y-3">
                 <div className="flex items-center gap-2 text-xs font-bold text-emerald-300 uppercase tracking-wider">
                   <ShieldAlert className="w-4 h-4 text-emerald-400" />
-                  <span>Acciones de Mitigación Térmica en el Valle</span>
+                  <span>Qué Hacer Para Cuidar la Chacra</span>
                 </div>
 
-                <div className="space-y-2 text-xs text-slate-300">
-                  <div className="p-2.5 rounded bg-slate-950/60 border border-slate-800">
+                <div className="space-y-2 text-xs text-slate-200">
+                  <div className="p-2.5 rounded bg-slate-950/70 border border-slate-800">
                     <span className="font-bold text-amber-300 block">
-                      🌊 Riego térmico preventivo (02:00 AM):
+                      🌊 Riego preventivo por aspersión (2:00 AM):
                     </span>
                     {result.predictedTminC <= 1.0 ? (
                       <p className="mt-0.5 text-slate-300 leading-relaxed">
-                        Activar <strong>riego por aspersión continuo a las 02:00 AM</strong>. La transición de fase del agua a hielo libera 80 cal/g de calor latente de fusión, frenando la caída de temperatura del estrato de aire rasante.
+                        Prender el <strong>riego por aspersión a las 2:00 AM</strong>. Al congelarse el agua en la superficie libera calor natural y evita que la hoja se congele por dentro.
                       </p>
                     ) : (
                       <p className="mt-0.5 text-slate-300 leading-relaxed">
-                        Mantener humedad superficial en el suelo para aumentar la capacidad calorífica del sustrato. Monitorear hondonadas de Chupaca y Sicaya.
+                        Mantener la tierra húmeda para que guarde calor. Vigilar parcelas en partes bajas de Chupaca y Sicaya.
                       </p>
                     )}
                   </div>
 
-                  <div className="p-2.5 rounded bg-slate-950/60 border border-slate-800">
+                  <div className="p-2.5 rounded bg-slate-950/70 border border-slate-800">
                     <span className="font-bold text-amber-300 block">
-                      🛡️ Cobertura térmica nocturna &amp; Monitoreo de inversión térmica:
+                      🛡️ Mantas y cubiertas para el cultivo:
                     </span>
                     <p className="mt-0.5 text-slate-300 leading-relaxed">
                       {result.predictedTminC <= 1.5
-                        ? 'Desplegar mantas térmicas agryl (17 g/m²) antes de las 19:00 h para reducir el escape de radiación infrarroja terrestre. Monitorear gradientes verticales de temperatura e inversión térmica en el fondo del valle.'
-                        : 'Condición térmica estable. Mantener labores ordinarias de monitoreo meteorológico.'}
+                        ? 'Tapar los cultivos sensibles con mantas térmicas agryl antes de las 7:00 PM para evitar que el calor se escape hacia el cielo.'
+                        : 'Condiciones normales. No es necesario colocar mantas térmicas.'}
                     </p>
                   </div>
                 </div>
 
-                {/* Cronograma de Ronda Térmica Nocturna */}
+                {/* Cronograma Nocturno */}
                 <div className="pt-2 border-t border-emerald-500/20 text-[11px] text-slate-300 space-y-1">
-                  <span className="font-bold text-slate-200 block">⏰ Cronograma de Ronda Térmica Nocturna:</span>
+                  <span className="font-bold text-slate-200 block">⏰ Horarios Clave para Esta Noche:</span>
                   <div className="grid grid-cols-3 gap-1.5 font-mono text-center">
                     <div className="bg-slate-950/80 p-1.5 rounded border border-slate-800">
-                      <span className="text-slate-400 block text-[10px]">22:00 h</span>
-                      <span className="text-slate-200">Ronda 1</span>
+                      <span className="text-slate-400 block text-[10px]">10:00 PM</span>
+                      <span className="text-slate-200">Revisar cielo</span>
                     </div>
                     <div className="bg-slate-950/80 p-1.5 rounded border border-slate-800">
-                      <span className="text-amber-400 block text-[10px]">02:00 h</span>
-                      <span className="text-amber-300 font-bold">Riego Térmico ON</span>
+                      <span className="text-amber-400 block text-[10px]">02:00 AM</span>
+                      <span className="text-amber-300 font-bold">Activar Riego</span>
                     </div>
                     <div className="bg-slate-950/80 p-1.5 rounded border border-slate-800">
-                      <span className="text-red-400 block text-[10px]">05:30 h</span>
-                      <span className="text-red-300 font-bold">Pico Mín.</span>
+                      <span className="text-red-400 block text-[10px]">05:30 AM</span>
+                      <span className="text-red-300 font-bold">Pico Más Frío</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Nielsen H3: User Control Actions (Copy Summary to WhatsApp/Clipboard) */}
+              {/* Copy Summary to WhatsApp */}
               <div className="pt-2 flex items-center justify-between gap-2">
                 <Button
                   type="button"
@@ -931,21 +931,21 @@ export default function PredictEvening() {
                       : 'bg-slate-800 hover:bg-slate-700 text-white'
                   }`}
                 >
-                  {copied ? '¡Ficha Copiada al Portapapeles!' : 'Copiar Ficha Resumen (WhatsApp / SMS)'}
+                  {copied ? '¡Recomendaciones Copiadas!' : 'Copiar Resumen para WhatsApp o SMS'}
                 </Button>
               </div>
             </div>
           ) : (
             <div className="bg-slate-900/40 border border-dashed border-slate-800 rounded-2xl p-8 text-center flex flex-col items-center justify-center min-h-[420px] space-y-3">
               <Layers className="w-14 h-14 text-slate-700" />
-              <h4 className="text-sm font-bold text-slate-300">
+              <h4 className="text-sm font-bold text-slate-200">
                 Esperando Ejecución del Pronóstico
               </h4>
               <p className="text-xs text-slate-400 max-w-xs leading-relaxed">
-                Seleccione uno de los <strong>atajos de evaluación de 1-clic</strong> arriba o ajuste los parámetros de las 18:00 h y haga clic en "Ejecutar Pronóstico de Helada".
+                Seleccione uno de los <strong>ejemplos rápidos</strong> arriba o ingrese las lecturas de las 6:00 PM y haga clic en "Ejecutar Pronóstico de Helada".
               </p>
-              <div className="flex items-center gap-2 text-[11px] text-cyan-400 font-mono pt-2">
-                <span>Obs. Huayao IGP • 3,314 msnm</span>
+              <div className="flex items-center gap-2 text-[11px] text-emerald-400 font-medium pt-2">
+                <span>Obs. Huancayo IGP • 3,314 msnm</span>
               </div>
             </div>
           )}
